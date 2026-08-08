@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Avatar module: click to toggle a larger size. Layout reflows
+  // naturally since it's a normal flex item inside the wrapping hero line.
+  const avatarBtn = document.getElementById('avatarBtn');
+
+  if (avatarBtn) {
+    avatarBtn.addEventListener('click', () => {
+      const isExpanded = avatarBtn.classList.toggle('is-expanded');
+      avatarBtn.setAttribute('aria-pressed', String(isExpanded));
+      avatarBtn.setAttribute('aria-label', isExpanded ? 'Shrink photo' : 'Expand photo');
+    });
+  }
+
   const toggleBtn = document.getElementById('navToggle');
   const closeBtn = document.getElementById('navClose');
   const overlay = document.getElementById('navOverlay');

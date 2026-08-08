@@ -23,6 +23,9 @@
 
   --radius-lg: 24px;
   --radius-pill: 999px;
+
+  --avatar-size: 46px;
+  --avatar-size-expanded: 92px;
 }
 
 * {
@@ -240,25 +243,51 @@ body.menu-open {
   align-items: center;
   gap: 8px;
   background: var(--color-pill-bg);
-  padding: 6px 16px 6px 16px;
+  padding: 6px 16px;
   border-radius: var(--radius-pill);
   font-weight: 590;
   line-height: 1;
-}
-
-.pill:has(.pill-avatar) {
-  padding-right: 6px;
 }
 
 .pill-text {
   white-space: nowrap;
 }
 
-.pill-avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+.pill-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+/* Standalone avatar module, sits beside the pill (not inside it).
+   Rounded-square "squircle" shape; click to expand — everything
+   around it reflows since it's a normal inline-flex item. */
+.hero-avatar-btn {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  line-height: 0;
+}
+
+.hero-avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 26%;
   object-fit: cover;
+  transition: width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-avatar-btn.is-expanded .hero-avatar {
+  width: var(--avatar-size-expanded);
+  height: var(--avatar-size-expanded);
+}
+
+.hero-avatar-btn:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+  border-radius: 26%;
 }
 
 /* ---------- Work / project sections ---------- */
@@ -299,31 +328,6 @@ body.menu-open {
   display: block;
   object-fit: cover;
   object-position: center;
-}
-
-.media-icons {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  gap: 10px;
-}
-
-.icon-dot {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-dot--single {
-  position: absolute;
-  top: 20px;
-  left: 20px;
 }
 
 .project-copy h2 {
@@ -421,9 +425,14 @@ body.menu-open {
     padding: 5px 14px;
   }
 
-  .pill-avatar {
-    width: 24px;
-    height: 24px;
+  .pill-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  :root {
+    --avatar-size: 32px;
+    --avatar-size-expanded: 64px;
   }
 
   .work {
