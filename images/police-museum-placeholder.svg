@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <rect width="1200" height="900" fill="#131B3F"/>
+  <g font-family="-apple-system, 'SF Pro Text', Arial, sans-serif" fill="#ffffff">
+    <text x="70" y="100" font-size="20" font-weight="600" letter-spacing="3" opacity="0.7">VANCOUVER</text>
+    <text x="70" y="170" font-size="64" font-weight="700">POLICE</text>
+    <text x="70" y="240" font-size="64" font-weight="700">MUSEUM</text>
+    <text x="70" y="280" font-size="20" font-weight="500" opacity="0.7">&amp; ARCHIVES</text>
+  </g>
+  <rect x="150" y="360" width="900" height="470" rx="28" fill="#ffffff"/>
+  <g font-family="-apple-system, 'SF Pro Text', Arial, sans-serif" fill="#131B3F">
+    <text x="200" y="460" font-size="34" font-weight="700">Ready to investigate?</text>
+    <text x="200" y="500" font-size="18" opacity="0.6">Use the interactive map to browse exhibits</text>
+  </g>
+  <rect x="200" y="560" width="800" height="230" rx="16" fill="#F2F2F2"/>
+</svg>
