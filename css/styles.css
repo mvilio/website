@@ -15,6 +15,7 @@
   --color-teal: #29d2c1;
   --color-navy: #131b3f;
   --color-black: #0a0a0a;
+  --color-cursor: #1e3a8a;
 
   --container-width: 1360px;
   --gutter: 96px;
@@ -80,29 +81,47 @@ img {
 }
 
 .nav-desktop {
+  position: relative;
   display: flex;
-  gap: 40px;
+  align-items: center;
+  gap: 28px;
   font-size: 16px;
   font-weight: 450;
+  padding: 10px 26px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.6) inset,
+    0 8px 24px rgba(20, 20, 30, 0.06);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
 }
 
-.nav-desktop a {
+.nav-link {
   position: relative;
+  padding: 2px 4px;
 }
 
-.nav-desktop a::after {
-  content: "";
+/* Hover accent: a small dark-blue dot that pops in at the corner of
+   whichever nav item is hovered. */
+.nav-dot {
   position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  transition: width 0.25s ease;
+  bottom: -7px;
+  right: -8px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--color-cursor);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
 }
 
-.nav-desktop a:hover::after {
-  width: 100%;
+.nav-link:hover .nav-dot {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Mobile pill toggle button (hidden on desktop) */
@@ -111,9 +130,13 @@ img {
   width: 46px;
   height: 46px;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border);
-  background: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.6) inset,
+    0 8px 24px rgba(20, 20, 30, 0.06);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -267,12 +290,15 @@ body.menu-open {
   border-radius: var(--radius-lg);
   overflow: hidden;
   line-height: 0;
+  aspect-ratio: 14 / 9;
 }
 
 .project-media img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .media-icons {
