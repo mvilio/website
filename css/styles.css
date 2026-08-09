@@ -17,8 +17,8 @@
   --color-black: #0a0a0a;
   --color-cursor: #1e3a8a;
 
-  --container-width: 1360px;
-  --gutter: 96px;
+  --container-width: 1760px;
+  --gutter: clamp(56px, 6vw, 140px);
   --gutter-mobile: 24px;
 
   --radius-lg: 24px;
@@ -689,6 +689,10 @@ body.menu-open {
 
   .project--media-last .project-media {
     order: 0;
+  }
+
+  .project--media-last .project-copy {
+    order: 1;
   }
 
   .project-copy h2 {
