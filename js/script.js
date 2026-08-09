@@ -126,6 +126,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Copy email address button (About page): copies the email to the
+  // clipboard and briefly swaps the label to confirm it worked.
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+
+  if (copyEmailBtn) {
+    const copyEmailText = copyEmailBtn.querySelector('.copy-email-text');
+    const originalLabel = copyEmailText ? copyEmailText.textContent : '';
+    const email = copyEmailBtn.dataset.email || '';
+    let resetTimeout;
+
+    copyEmailBtn.addEventListener('click', () => {
+      const showFeedback = () => {
+        if (!copyEmailText) return;
+        clearTimeout(resetTimeout);
+        copyEmailText.textContent = 'Copied!';
+        resetTimeout = setTimeout(() => {
+          copyEmailText.textContent = originalLabel;
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(showFeedback).catch(() => {});
+      } else {
+        const temp = document.createElement('textarea');
+        temp.value = email;
+        temp.style.position = 'fixed';
+        temp.style.opacity = '0';
+        document.body.appendChild(temp);
+        temp.select();
+        try {
+          document.execCommand('copy');
+          showFeedback();
+        } catch (err) {
+          // Clipboard copy not supported; fail silently.
+        }
+        document.body.removeChild(temp);
+      }
+    });
+  }
+
   const toggleBtn = document.getElementById('navToggle');
   const closeBtn = document.getElementById('navClose');
   const overlay = document.getElementById('navOverlay');

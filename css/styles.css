@@ -370,6 +370,152 @@ body.menu-open {
   margin-top: 18px;
 }
 
+/* ---------- About page ---------- */
+
+.about-intro {
+  padding-top: 8px;
+  padding-bottom: 96px;
+}
+
+.about-intro h1 {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.about-subtitle {
+  font-size: 20px;
+  color: var(--color-text-secondary);
+  font-weight: 450;
+  margin-bottom: 40px;
+}
+
+.about-body {
+  max-width: 62ch;
+  margin-bottom: 40px;
+}
+
+.about-body p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.about-body p + p {
+  margin-top: 22px;
+}
+
+.copy-email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-text);
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-sf);
+  font-size: 15px;
+  font-weight: 450;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.copy-email-btn:hover,
+.copy-email-btn:focus-visible {
+  background: var(--color-text);
+  color: #ffffff;
+}
+
+.copy-email-btn svg {
+  flex-shrink: 0;
+}
+
+/* ---------- Experience ---------- */
+
+.experience {
+  padding-bottom: 160px;
+}
+
+.experience h2 {
+  font-size: 20px;
+  font-weight: 590;
+  margin-bottom: 28px;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: 110px 1fr 110px;
+  gap: var(--gutter);
+  align-items: start;
+  padding: 22px 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 15px;
+}
+
+.experience-item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.experience-dates {
+  color: var(--color-text);
+  font-weight: 450;
+}
+
+.experience-company {
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.experience-title {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.experience-location {
+  text-align: right;
+  color: var(--color-text);
+}
+
+@media (max-width: 860px) {
+  .about-intro {
+    padding-bottom: 64px;
+  }
+
+  .about-intro h1 {
+    font-size: 24px;
+  }
+
+  .about-subtitle {
+    font-size: 17px;
+    margin-bottom: 28px;
+  }
+
+  .about-body p {
+    font-size: 16px;
+  }
+
+  .experience {
+    padding-bottom: 100px;
+  }
+
+  .experience-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px 0;
+  }
+
+  .experience-location {
+    text-align: left;
+  }
+}
+
 /* ---------- Project detail pages ---------- */
 
 .project-detail {
