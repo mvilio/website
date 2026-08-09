@@ -1,4 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Custom cursor: a small dot replaces the system pointer, and grows into
+  // a filled circle with an arrow whenever it's over a link that navigates
+  // somewhere (nav, logo, project media/titles, footer icons, back-to-work
+  // links). Only runs on devices with a real mouse — touch devices keep
+  // their native tap behaviour untouched.
+  const supportsCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (supportsCustomCursor) {
+    document.documentElement.classList.add('has-custom-cursor');
+
+    const cursorEl = document.createElement('div');
+    cursorEl.className = 'custom-cursor';
+    cursorEl.innerHTML = `
+      <span class="custom-cursor-dot"></span>
+      <svg class="custom-cursor-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4 12L12 4M12 4H5.5M12 4V10.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    `;
+    document.body.appendChild(cursorEl);
+
+    let hasMoved = false;
+
+    document.addEventListener('mousemove', (e) => {
+      cursorEl.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+      if (!hasMoved) {
+        hasMoved = true;
+        cursorEl.style.opacity = '1';
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursorEl.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+      if (hasMoved) cursorEl.style.opacity = '1';
+    });
+
+    const isCursorTarget = (el) => el.closest(
+      'a[href="jazzdor.html"], a[href="police-museum.html"], a[href="https://davidson-co.com/"]'
+    );
+
+    document.addEventListener('mouseover', (e) => {
+      if (isCursorTarget(e.target)) {
+        cursorEl.classList.add('is-hover');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (isCursorTarget(e.target)) {
+        cursorEl.classList.remove('is-hover');
+      }
+    });
+  }
+
   // Reveal on Scroll: fades and lifts whole blocks (hero, project
   // articles, footer, etc.) into place as they scroll into view,
   // rather than animating individual words.

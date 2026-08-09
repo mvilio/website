@@ -15,7 +15,7 @@
   --color-teal: #29d2c1;
   --color-navy: #131b3f;
   --color-black: #0a0a0a;
-  --color-cursor: #1e3a8a;
+  --color-cursor: #3966ad;
 
   --container-width: 1760px;
   --gutter: clamp(56px, 6vw, 140px);
@@ -1206,7 +1206,68 @@ body.video-modal-open {
   }
 }
 
-/* ---------- Accessibility ---------- */
+/* ---------- Custom cursor ---------- */
+/* A small dot replaces the system pointer on devices with a real mouse.
+   It grows into a filled circle with an arrow whenever the pointer is
+   over a link that navigates somewhere (nav, logo, project media/titles,
+   footer icons, back-to-work links). Injected + driven by script.js;
+   left untouched on touch devices, which keep native tap behaviour. */
+
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.custom-cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background: var(--color-cursor);
+  transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-cursor-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-cursor.is-hover .custom-cursor-dot {
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+}
+
+.custom-cursor.is-hover .custom-cursor-arrow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
 
 a:focus-visible,
 button:focus-visible {
