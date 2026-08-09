@@ -42,6 +42,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Click-to-retype: clicking the "Product Designer" or "Vancouver,
+  // British Columbia" pill retypes its text like a typewriter.
+  const typePills = document.querySelectorAll('.pill-type');
+
+  const typeText = (el, text, speed, onDone) => {
+    el.textContent = '';
+    el.classList.add('is-typing');
+    let i = 0;
+    const interval = setInterval(() => {
+      el.textContent += text.charAt(i);
+      i += 1;
+      if (i >= text.length) {
+        clearInterval(interval);
+        el.classList.remove('is-typing');
+        if (onDone) onDone();
+      }
+    }, speed);
+  };
+
+  typePills.forEach((pill) => {
+    const textEl = pill.querySelector('.pill-text');
+    if (!textEl) return;
+    const originalText = textEl.textContent;
+    let animating = false;
+
+    const trigger = () => {
+      if (animating) return;
+      animating = true;
+      typeText(textEl, originalText, 45, () => {
+        animating = false;
+      });
+    };
+
+    pill.addEventListener('click', trigger);
+    pill.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        trigger();
+      }
+    });
+  });
+
   const toggleBtn = document.getElementById('navToggle');
   const closeBtn = document.getElementById('navClose');
   const overlay = document.getElementById('navOverlay');

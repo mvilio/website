@@ -24,8 +24,7 @@
   --radius-lg: 24px;
   --radius-pill: 999px;
 
-  --video-width: 128px;
-  --video-height: 76px;
+  --pill-height: 42px;
 }
 
 * {
@@ -76,18 +75,6 @@ img {
   padding-bottom: 40px;
 }
 
-.site-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
-  pointer-events: none;
-}
-
 /* Pushes page content below the now-fixed header. Update if header
    padding/content height changes. */
 main {
@@ -127,6 +114,25 @@ main {
 .nav-link {
   position: relative;
   padding: 2px 4px;
+}
+
+.nav-dot {
+  position: absolute;
+  bottom: -6px;
+  right: -7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8a8a90;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+}
+
+.nav-link:hover .nav-dot {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Mobile pill toggle button (hidden on desktop) */
@@ -268,20 +274,47 @@ body.menu-open {
   opacity: 0.85;
 }
 
+.pill-type {
+  cursor: pointer;
+}
+
+.pill-type:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+.pill-text.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 2px;
+  background: currentColor;
+  vertical-align: -0.15em;
+  animation: pill-cursor-blink 0.8s steps(1) infinite;
+}
+
+@keyframes pill-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 /* Standalone video module. Sits on its own row below the intro text
    so its left edge lines up with the logo above and the project
    images below (all share the container's left padding). Small,
    muted, looping, no click interaction. */
 .hero-video-wrap {
-  margin-top: 16px;
-  margin-bottom: 6px;
-  display: flex;
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
 }
 
 .hero-video {
-  width: var(--video-width);
-  height: var(--video-height);
-  border-radius: 12px;
+  height: var(--pill-height);
+  aspect-ratio: 16 / 9;
+  width: auto;
+  border-radius: 10px;
   object-fit: cover;
 }
 
@@ -386,6 +419,10 @@ body.menu-open {
   .hero-line {
     font-size: 26px;
   }
+
+  :root {
+    --pill-height: 38px;
+  }
 }
 
 @media (max-width: 860px) {
@@ -430,8 +467,7 @@ body.menu-open {
   }
 
   :root {
-    --video-width: 96px;
-    --video-height: 56px;
+    --pill-height: 31px;
   }
 
   .work {
@@ -461,6 +497,10 @@ body.menu-open {
 @media (max-width: 420px) {
   .hero-line {
     font-size: 19px;
+  }
+
+  :root {
+    --pill-height: 29px;
   }
 
   .nav-overlay-links a {

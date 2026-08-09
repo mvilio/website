@@ -15,8 +15,8 @@
       <a href="index.html" class="logo">Markus Vilio</a>
 
       <nav class="nav-desktop" aria-label="Primary">
-        <a href="#work" class="nav-link">Work</a>
-        <a href="about.html" class="nav-link">About</a>
+        <a href="#work" class="nav-link">Work<span class="nav-dot" aria-hidden="true"></span></a>
+        <a href="about.html" class="nav-link">About<span class="nav-dot" aria-hidden="true"></span></a>
       </nav>
 
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
@@ -46,21 +46,20 @@
       <div class="reveal-fade">
       <p class="hero-line">
         Markus Vilio is a
-        <span class="pill"><span class="pill-text">Product Designer</span></span>
+        <span class="pill pill-type" tabindex="0" role="button" aria-label="Replay text animation"><span class="pill-text">Product Designer</span></span>
+        <span class="hero-video-wrap">
+          <video class="hero-video" autoplay muted loop playsinline disablepictureinpicture aria-hidden="true">
+            <source src="images/home.mp4" type="video/mp4">
+          </video>
+        </span>
         <span class="hero-group">
           based in
-          <span class="pill">
+          <span class="pill pill-type" tabindex="0" role="button" aria-label="Replay text animation">
             <span class="pill-text">Vancouver, British Columbia</span>
             <img class="pill-icon" src="images/mountain-icon.png" alt="">
           </span>
         </span>
       </p>
-
-      <div class="hero-video-wrap">
-        <video class="hero-video" autoplay muted loop playsinline disablepictureinpicture aria-hidden="true">
-          <source src="images/home.mp4" type="video/mp4">
-        </video>
-      </div>
 
       <p class="hero-line hero-line--secondary">currently designing @ Davidson &amp; Company</p>
       </div>
