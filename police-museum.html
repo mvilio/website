@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vancouver Police Museum &amp; Archives — Markus Vilio</title>
-  <meta name="description" content="Adaptive Mode: a guided, accessible experience for the Vancouver Police Museum, built on WCAG and POUR principles.">
+  <title>Adaptive Mode — Vancouver Police Museum &amp; Archives — Markus Vilio</title>
+  <meta name="description" content="Adaptive Mode: a guided, accessible experience designed with the Vancouver Police Museum, built on WCAG and POUR principles.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -41,21 +41,133 @@
   </div>
 
   <main>
-    <section class="project-detail container reveal-fade">
+    <section class="case-hero container reveal-fade">
       <a href="index.html#work" class="back-link">&larr; Back to work</a>
 
-      <div class="project-detail-hero">
-        <img src="images/police-museum.png" alt="Vancouver Police Museum & Archives app concept on navy background">
-      </div>
+      <h1>Adaptive Mode</h1>
+      <p class="case-subtitle">Interactive experience designed with the Vancouver Police Museum.</p>
 
-      <div class="project-detail-copy">
-        <h1>Vancouver Police Museum &amp; Archives</h1>
-        <p>Developed with the Vancouver Police Museum, Adaptive Mode transforms static exhibits into a guided, accessible experience for visitors of all abilities. I led the UX process from initial research through high-fidelity prototyping, delivering a modular design system built on WCAG and POUR principles.</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="label">Timeline</div>
+          <div class="value">3 Months, 2025</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Team</div>
+          <div class="value">Isabel Garcia | Anaka Leong<br>Wei Ong | Elina Kasnitskaia | Vithun Geetha</div>
+        </div>
       </div>
     </section>
 
+    <!-- Primary visual: walkthrough video, once VAN.mp4 is added to /images -->
+    <section class="container reveal-fade" style="padding-bottom: 64px;">
+      <div class="laptop-frame-wrap">
+        <div class="laptop-frame">
+          <video class="laptop-poster" id="policeVideo" muted loop playsinline poster="images/police-hero-ipad.png" controls>
+            <source src="images/VAN.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="laptop-frame-wrap"><div class="laptop-frame-base"></div></div>
+    </section>
+
+    <section class="case-section container reveal-fade" style="border-top: none; padding-top: 0;">
+      <h2>Purpose — Project Overview</h2>
+      <p class="lede">The Vancouver Police Museum's static exhibits made it hard for visitors with different backgrounds and accessibility needs to stay engaged. I led the UX process, from research through prototyping, to design Adaptive Mode — a guided, accessible experience built with museum stakeholders and planned for future implementation once the museum's nonprofit budget allows.</p>
+      <div class="case-columns" style="margin-top: 8px;">
+        <div>
+          <p><strong style="color: var(--color-text);">Problem</strong><br>Static exhibits limited engagement, accessibility, and clarity for a diverse range of visitors.</p>
+        </div>
+        <div>
+          <p><strong style="color: var(--color-text);">Outcome</strong><br>A guided, customizable interaction model that makes exhibits more accessible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section container reveal-fade">
+      <h2>My Role</h2>
+      <p class="lede">I led the UX process end to end, working directly with museum stakeholders.</p>
+      <ul class="case-list">
+        <li><strong>Research:</strong> Ran the field, external, and ethnographic studies before the pitch.</li>
+        <li><strong>Journey mapping:</strong> Synthesized research into maps that surfaced where visitors disengaged.</li>
+        <li><strong>Storyboarding:</strong> Explored concepts and landed on Adaptive Mode as the strongest direction.</li>
+        <li><strong>Interaction design:</strong> Designed the flows and interaction model, applying WCAG and POUR.</li>
+        <li><strong>Prototyping:</strong> Built high-fidelity prototypes to test and communicate the experience.</li>
+        <li><strong>Stakeholder collaboration:</strong> Kept the process grounded in what the museum could support, and delivered guidelines so the team can implement it without me.</li>
+      </ul>
+    </section>
+
+    <figure class="case-media-block container reveal-fade">
+      <img src="images/police-hero-ipad.png" alt="Adaptive Mode start screen and interactive floor map shown on two tablets">
+    </figure>
+
+    <section class="case-section container reveal-fade">
+      <h2>Research &amp; Process</h2>
+      <p class="lede">I combined observation and qualitative methods to understand the visitor experience and pinpoint friction points.</p>
+      <ul class="case-list">
+        <li><strong>External Observations</strong> — Watched how visitors interacted with exhibits: where they lingered, skipped past content, or looked confused.</li>
+        <li><strong>Field Observations</strong> — Documented accessibility challenges and navigation issues on-site.</li>
+        <li><strong>Ethnographic Studies</strong> — Gathered visitor insights on expectations and frustrations.</li>
+      </ul>
+      <p style="margin-top: 24px;">I brought these findings together into journey maps that mapped each stage of a visit to see exactly where engagement dropped off, and why.</p>
+      <p style="margin-top: 20px;"><strong style="color: var(--color-text);">The maps showed:</strong></p>
+      <ul class="case-list">
+        <li>Static exhibits often failed to engage visitors or support learning for all abilities.</li>
+        <li>Dense text, limited language support, and unclear wayfinding created accessibility barriers.</li>
+        <li>Cognitive, sensory, and physical limitations kept some visitors from fully participating.</li>
+        <li>Visitors responded well to modular, guided, interactive experiences.</li>
+      </ul>
+      <p style="margin-top: 24px;">That evidence pointed directly to Adaptive Mode. I explored several concepts through storyboarding, evaluating each against these findings, and Adaptive Mode emerged as the strongest direction.</p>
+    </section>
+
+    <figure class="case-media-block container reveal-fade">
+      <img src="images/police-journey-map.png" alt="Visitor journey map covering entering the museum, observation, interaction, learning, and wrap up">
+      <figcaption>Journey mapping the visit — from entering the museum through observation, interaction, learning, and wrap-up.</figcaption>
+    </figure>
+
+    <figure class="case-media-block container reveal-fade">
+      <img src="images/police-personas.png" alt="Ella Eastman and Will Kenney persona journey maps with design focus, pain points, and opportunities">
+      <figcaption>Two personas — Ella, a returning visitor who learns visually, and Will, an ESL grandparent visiting with his grandson — grounded the design focus in real friction points.</figcaption>
+    </figure>
+
+    <section class="case-section container reveal-fade">
+      <h2>Design Scope</h2>
+      <p class="lede">How might we make the museum's content more accessible, so every visitor can explore with confidence?</p>
+      <p><strong style="color: var(--color-text);">The Focus: Accessibility</strong></p>
+      <p>I designed Adaptive Mode around WCAG standards and the POUR framework. High-contrast mode, multilingual and audio-supported content, and adjustable text sizes let visitors customize the experience. Large touch targets and plain-language content keep it simple and easy to navigate, and the system works with assistive technologies and adapts across devices.</p>
+    </section>
+
+    <figure class="case-media-block container reveal-fade">
+      <img src="images/police-flow-diagram.png" alt="Adaptive Mode flow diagram from start screen through language, text, and visual preferences to the main map and exhibit pages">
+      <figcaption>The customization flow — language, text size, and display preferences — before visitors land on the interactive floor map.</figcaption>
+    </figure>
+
+    <figure class="case-media-block container reveal-fade">
+      <img src="images/police-screens-grid.png" alt="Grid of ten high-fidelity Adaptive Mode screens across onboarding, exhibits, and settings">
+      <figcaption>High-fidelity screens across onboarding, the exhibit gallery, and the My Visit and Settings panels.</figcaption>
+    </figure>
+
+    <section class="case-section container reveal-fade">
+      <h2>Result</h2>
+      <p class="lede">Adaptive Mode gives visitors a guided, accessible way to explore the museum at their own pace, with a modular structure to support future content updates. I delivered high-fidelity mockups, design guidelines, and scenario-based walkthroughs so the museum can implement the system when its budget allows, without needing me involved.</p>
+      <p>The project is grounded in real research and real stakeholder input, and it's ready to move forward.</p>
+    </section>
+
+    <section class="case-section container reveal-fade">
+      <h2>Key Learnings</h2>
+      <ul class="case-list">
+        <li><strong>Data-driven decisions</strong> — Research validated every design choice, not assumptions.</li>
+        <li><strong>Balancing ambition and feasibility</strong> — Even conceptual work needs a realistic foundation.</li>
+        <li><strong>Accessibility-first design</strong> — Building WCAG in from the start, not as an afterthought, changed how I approached the whole project.</li>
+      </ul>
+    </section>
+
+    <div class="container reveal-fade" style="padding-bottom: 24px;">
+      <a href="index.html#work" class="back-link" style="margin-bottom: 0;">&larr; Back to work</a>
+    </div>
+
     <!-- Footer / Contact -->
-    <footer class="site-footer container reveal-fade" id="contact">
+    <footer class="site-footer container reveal-fade" id="contact" style="padding-top: 96px;">
       <h2>Get in Touch</h2>
       <div class="footer-icons">
         <a href="https://www.linkedin.com/in/markusv19" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="icon-circle">
