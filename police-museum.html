@@ -64,14 +64,9 @@
 
     <!-- Primary visual: walkthrough video, once VAN.mp4 is added to /images -->
     <section class="container reveal-fade" style="padding-bottom: 64px;">
-      <div class="laptop-frame-wrap">
-        <div class="laptop-frame">
-          <video class="laptop-poster" id="policeVideo" muted loop playsinline poster="images/police-hero-ipad.png" controls>
-            <source src="images/VAN.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <div class="laptop-frame-wrap"><div class="laptop-frame-base"></div></div>
+      <video class="case-video" id="policeVideo" autoplay playsinline disablepictureinpicture poster="images/police-hero-ipad.png" controls controlsList="nodownload noremoteplayback" oncontextmenu="return false">
+        <source src="images/VAN.mp4" type="video/mp4">
+      </video>
     </section>
 
     <section class="case-section container reveal-fade" style="border-top: none; padding-top: 0;">

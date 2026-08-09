@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Hero video: force autoplay/loop/mute so it always just loops with
-  // no play button, even in browsers that are picky about autoplay.
+  // Hero video: force autoplay/loop/mute so it always just loops with no
+  // click needed, even in browsers that are picky about autoplay.
   document.querySelectorAll('.hero-video').forEach((video) => {
     video.muted = true;
     video.loop = true;
@@ -95,6 +95,32 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('scroll', retry, { once: true });
       });
     }
+  });
+
+  // Case-study preview videos: start playing immediately with sound on.
+  // Browsers that block unmusted autoplay force a muted fallback so it
+  // still plays right away. Once the video finishes its first play-through
+  // it loops on its own, muted from then on — the person can turn sound
+  // back on any time using the native mute button in the controls.
+  document.querySelectorAll('.case-video').forEach((video) => {
+    video.loop = false;
+    video.playsInline = true;
+
+    const startMuted = () => {
+      video.muted = true;
+      video.play().catch(() => {});
+    };
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(startMuted);
+    }
+
+    video.addEventListener('ended', () => {
+      video.muted = true;
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    });
   });
 
   // Click-to-retype: clicking the "Product Designer" or "Vancouver,

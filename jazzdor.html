@@ -64,14 +64,9 @@
 
     <!-- Primary visual: walkthrough video, once Jazz.mp4 is added to /images -->
     <section class="container reveal-fade" style="padding-bottom: 64px;">
-      <div class="laptop-frame-wrap">
-        <div class="laptop-frame">
-          <video class="laptop-poster" id="jazzdorVideo" muted loop playsinline poster="images/jazzdor-hero-laptop.png" controls>
-            <source src="images/Jazz.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <div class="laptop-frame-wrap"><div class="laptop-frame-base"></div></div>
+      <video class="case-video" id="jazzdorVideo" autoplay playsinline disablepictureinpicture poster="images/jazzdor-hero-laptop.png" controls controlsList="nodownload noremoteplayback" oncontextmenu="return false">
+        <source src="images/Jazz.mp4" type="video/mp4">
+      </video>
     </section>
 
     <section class="case-section container reveal-fade" style="border-top: none; padding-top: 0;">

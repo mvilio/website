@@ -815,49 +815,18 @@ body.menu-open {
   max-width: none;
 }
 
-/* ---------- Laptop video frame ---------- */
+/* ---------- Case-study preview video ---------- */
+/* Plain video, no device mockup — just a slight rounded corner. */
 
-.laptop-frame-wrap {
-  display: flex;
-  justify-content: center;
-}
-
-.laptop-frame {
+.case-video {
   width: 100%;
   max-width: 860px;
-  background: #0a0a0a;
-  border-radius: 14px;
-  padding: 12px 12px 0;
-  box-shadow: 0 40px 80px rgba(10, 10, 15, 0.16);
-}
-
-.laptop-frame video,
-.laptop-frame .laptop-poster {
-  width: 100%;
-  aspect-ratio: 16 / 10;
   display: block;
-  border-radius: 5px 5px 0 0;
-  object-fit: cover;
-  background: #111;
-}
-
-.laptop-frame-base {
-  height: 14px;
-  max-width: 940px;
-  width: 108%;
-  margin: 0 -4%;
-  background: linear-gradient(#dcdcdc, #b9b9bb);
-  border-radius: 0 0 8px 8px;
-}
-
-.laptop-frame-base::before {
-  content: "";
-  display: block;
-  width: 90px;
-  height: 5px;
   margin: 0 auto;
-  background: #9a9a9c;
-  border-radius: 0 0 6px 6px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #111;
 }
 
 @media (max-width: 1100px) {
