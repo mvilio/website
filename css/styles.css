@@ -24,8 +24,8 @@
   --radius-lg: 24px;
   --radius-pill: 999px;
 
-  --avatar-size: 46px;
-  --avatar-size-expanded: 92px;
+  --video-width: 128px;
+  --video-height: 76px;
 }
 
 * {
@@ -67,8 +67,31 @@ img {
 /* ---------- Header ---------- */
 
 .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Pushes page content below the now-fixed header. Update if header
+   padding/content height changes. */
+main {
+  padding-top: 126px;
 }
 
 .header-inner {
@@ -104,27 +127,6 @@ img {
 .nav-link {
   position: relative;
   padding: 2px 4px;
-}
-
-/* Hover accent: a small dark-blue dot that pops in at the corner of
-   whichever nav item is hovered. */
-.nav-dot {
-  position: absolute;
-  bottom: -7px;
-  right: -8px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: var(--color-cursor);
-  pointer-events: none;
-  opacity: 0;
-  transform: scale(0.3);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
-}
-
-.nav-link:hover .nav-dot {
-  opacity: 1;
-  transform: scale(1);
 }
 
 /* Mobile pill toggle button (hidden on desktop) */
@@ -219,7 +221,6 @@ body.menu-open {
 .hero {
   padding-top: 120px;
   padding-bottom: 140px;
-  max-width: 1180px;
 }
 
 .hero-line {
@@ -233,6 +234,13 @@ body.menu-open {
   color: var(--color-text);
 }
 
+.hero-group {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+
 .hero-line--secondary {
   margin-top: 6px;
   color: var(--color-text);
@@ -244,7 +252,7 @@ body.menu-open {
   gap: 8px;
   background: var(--color-pill-bg);
   padding: 6px 16px;
-  border-radius: var(--radius-pill);
+  border-radius: 6px;
   font-weight: 590;
   line-height: 1;
 }
@@ -254,40 +262,27 @@ body.menu-open {
 }
 
 .pill-icon {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
   opacity: 0.85;
 }
 
-/* Standalone avatar module, sits beside the pill (not inside it).
-   Rounded-square "squircle" shape; click to expand — everything
-   around it reflows since it's a normal inline-flex item. */
-.hero-avatar-btn {
-  all: unset;
-  cursor: pointer;
-  display: inline-flex;
-  line-height: 0;
+/* Standalone video module. Sits on its own row below the intro text
+   so its left edge lines up with the logo above and the project
+   images below (all share the container's left padding). Small,
+   muted, looping, no click interaction. */
+.hero-video-wrap {
+  margin-top: 16px;
+  margin-bottom: 6px;
+  display: flex;
 }
 
-.hero-avatar {
-  width: var(--avatar-size);
-  height: var(--avatar-size);
-  border-radius: 26%;
+.hero-video {
+  width: var(--video-width);
+  height: var(--video-height);
+  border-radius: 12px;
   object-fit: cover;
-  transition: width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.hero-avatar-btn.is-expanded .hero-avatar {
-  width: var(--avatar-size-expanded);
-  height: var(--avatar-size-expanded);
-}
-
-.hero-avatar-btn:focus-visible {
-  outline: 2px solid var(--color-text);
-  outline-offset: 3px;
-  border-radius: 26%;
 }
 
 /* ---------- Work / project sections ---------- */
@@ -403,6 +398,10 @@ body.menu-open {
     padding-bottom: 0;
   }
 
+  main {
+    padding-top: 74px;
+  }
+
   .nav-desktop {
     display: none;
   }
@@ -426,13 +425,13 @@ body.menu-open {
   }
 
   .pill-icon {
-    width: 13px;
-    height: 13px;
+    width: 16px;
+    height: 16px;
   }
 
   :root {
-    --avatar-size: 32px;
-    --avatar-size-expanded: 64px;
+    --video-width: 96px;
+    --video-height: 56px;
   }
 
   .work {
@@ -466,6 +465,27 @@ body.menu-open {
 
   .nav-overlay-links a {
     font-size: 32px;
+  }
+}
+
+/* ---------- Reveal on Scroll ---------- */
+
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

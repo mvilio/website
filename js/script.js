@@ -1,15 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Avatar module: click to toggle a larger size. Layout reflows
-  // naturally since it's a normal flex item inside the wrapping hero line.
-  const avatarBtn = document.getElementById('avatarBtn');
+  // Reveal on Scroll: fades and lifts whole blocks (hero, project
+  // articles, footer, etc.) into place as they scroll into view,
+  // rather than animating individual words.
+  const revealEls = document.querySelectorAll('.reveal-fade');
 
-  if (avatarBtn) {
-    avatarBtn.addEventListener('click', () => {
-      const isExpanded = avatarBtn.classList.toggle('is-expanded');
-      avatarBtn.setAttribute('aria-pressed', String(isExpanded));
-      avatarBtn.setAttribute('aria-label', isExpanded ? 'Shrink photo' : 'Expand photo');
-    });
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    );
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
   }
+
+  // Hero video: force autoplay/loop/mute so it always just loops with
+  // no play button, even in browsers that are picky about autoplay.
+  document.querySelectorAll('.hero-video').forEach((video) => {
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        // Autoplay was blocked; retry once the user interacts with the page.
+        const retry = () => {
+          video.play().catch(() => {});
+          document.removeEventListener('click', retry);
+          document.removeEventListener('scroll', retry);
+        };
+        document.addEventListener('click', retry, { once: true });
+        document.addEventListener('scroll', retry, { once: true });
+      });
+    }
+  });
 
   const toggleBtn = document.getElementById('navToggle');
   const closeBtn = document.getElementById('navClose');
