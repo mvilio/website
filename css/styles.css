@@ -88,7 +88,7 @@ main {
 }
 
 .logo {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 590;
   letter-spacing: -0.01em;
 }
@@ -97,10 +97,10 @@ main {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 2px;
-  font-size: 15px;
+  gap: 4px;
+  font-size: 18px;
   font-weight: 450;
-  padding: 5px;
+  padding: 6px;
   border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -112,7 +112,7 @@ main {
 }
 
 .nav-link {
-  padding: 8px 18px;
+  padding: 10px 24px;
   border-radius: var(--radius-pill);
   font-weight: 450;
   transition: font-weight 0.15s ease;
@@ -325,7 +325,7 @@ body.menu-open {
   display: grid;
   grid-template-columns: 1.05fr 0.85fr;
   gap: var(--gutter);
-  align-items: center;
+  align-items: start;
 }
 
 .project--media-last {
@@ -350,6 +350,10 @@ body.menu-open {
   display: block;
   object-fit: cover;
   object-position: center;
+}
+
+.project-copy {
+  margin-top: 14px;
 }
 
 .project-copy h2 {
