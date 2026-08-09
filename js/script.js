@@ -84,6 +84,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Hero video: clicking (or Enter/Space on) the video opens it larger in
+  // a lightbox — YouTube-video sized, blurred backdrop, easy to click off.
+  const heroVideoWrap = document.getElementById('heroVideoWrap');
+  const videoModal = document.getElementById('videoModal');
+  const videoModalVideo = document.getElementById('videoModalVideo');
+  const videoModalClose = document.getElementById('videoModalClose');
+
+  if (heroVideoWrap && videoModal && videoModalVideo) {
+    const openVideoModal = () => {
+      videoModal.classList.add('is-open');
+      videoModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('video-modal-open');
+      videoModalVideo.play().catch(() => {});
+    };
+
+    const closeVideoModal = () => {
+      videoModal.classList.remove('is-open');
+      videoModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('video-modal-open');
+    };
+
+    heroVideoWrap.addEventListener('click', openVideoModal);
+    heroVideoWrap.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openVideoModal();
+      }
+    });
+
+    videoModalClose.addEventListener('click', closeVideoModal);
+
+    videoModal.querySelectorAll('[data-modal-close]').forEach((el) => {
+      el.addEventListener('click', closeVideoModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && videoModal.classList.contains('is-open')) {
+        closeVideoModal();
+      }
+    });
+  }
+
   const toggleBtn = document.getElementById('navToggle');
   const closeBtn = document.getElementById('navClose');
   const overlay = document.getElementById('navOverlay');

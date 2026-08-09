@@ -47,7 +47,7 @@
       <p class="hero-line">
         Markus Vilio is a
         <span class="pill pill-type" tabindex="0" role="button" aria-label="Replay text animation"><span class="pill-text">Product Designer</span></span>
-        <span class="hero-video-wrap">
+        <span class="hero-video-wrap" id="heroVideoWrap" tabindex="0" role="button" aria-label="Open video">
           <video class="hero-video" autoplay muted loop playsinline disablepictureinpicture aria-hidden="true">
             <source src="images/home.mp4" type="video/mp4">
           </video>
@@ -76,7 +76,7 @@
           </a>
         </div>
         <div class="project-copy">
-          <h2>Davidson &amp; Company LLP</h2>
+          <h2><a href="https://davidson-co.com/" target="_blank" rel="noopener noreferrer">Davidson &amp; Company LLP</a></h2>
           <p>Davidson helps people navigate complexity with confidence through trusted accounting, audit, tax, and advisory services. As a Brand Designer, I help shape how our brand comes to life across digital and physical experiences.</p>
           <p>My work focuses on creating clear, user-focused experiences that strengthen our brand, connect with our audiences, and make every interaction feel intuitive and engaging.</p>
         </div>
@@ -85,21 +85,25 @@
       <!-- Project 2: Vancouver Police Museum -->
       <article class="project container project--media-last reveal-fade">
         <div class="project-copy">
-          <h2>Vancouver Police Museum &amp; Archives</h2>
+          <h2><a href="police-museum.html">Vancouver Police Museum &amp; Archives</a></h2>
           <p>Developed with the Vancouver Police Museum, Adaptive Mode transforms static exhibits into a guided, accessible experience for visitors of all abilities. I led the UX process from initial research through high-fidelity prototyping, delivering a modular design system built on WCAG and POUR principles.</p>
         </div>
         <div class="project-media">
-          <img src="images/police-museum.png" alt="Vancouver Police Museum & Archives app concept on navy background">
+          <a href="police-museum.html">
+            <img src="images/police-museum.png" alt="Vancouver Police Museum & Archives app concept on navy background">
+          </a>
         </div>
       </article>
 
       <!-- Project 3: Jazzdor -->
       <article class="project container project--media-first reveal-fade">
         <div class="project-media">
-          <img src="images/jazzdor.png" alt="Jazzdor Festival brand concept on black background">
+          <a href="jazzdor.html">
+            <img src="images/jazzdor.png" alt="Jazzdor Festival brand concept on black background">
+          </a>
         </div>
         <div class="project-copy">
-          <h2>Jazzdor Festival</h2>
+          <h2><a href="jazzdor.html">Jazzdor Festival</a></h2>
           <p>Jazzdor is a contemporary jazz festival known for its bold visual identity and expressive spirit. This concept project explored how an experimental, form-driven brand system could be translated into an intuitive and accessible digital experience.</p>
           <p>Working as part of a five-person team, I focused on UX research, information architecture, and interaction design. My work centered on creating a clear user experience that balanced visual expression with usability, helping users easily discover artists, venues, schedules, and tickets.</p>
         </div>
@@ -120,6 +124,22 @@
       </div>
     </footer>
   </main>
+
+  <!-- Video lightbox: opens the hero video bigger, YouTube-size, with an
+       easy click-off-to-close backdrop rather than true browser fullscreen -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" data-modal-close></div>
+    <div class="video-modal-content">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Close video">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <video class="video-modal-video" id="videoModalVideo" autoplay muted loop playsinline>
+        <source src="images/home.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
