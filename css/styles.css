@@ -382,10 +382,55 @@ body.menu-open {
 }
 
 .about-intro h1 {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.01em;
   margin-bottom: 6px;
+}
+
+/* ---------- Hover Name (About page) ---------- */
+
+.hover-name {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.hover-name-text {
+  position: relative;
+  z-index: 2;
+}
+
+.hover-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 210px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-navy);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease,
+    left 0.12s ease-out, top 0.12s ease-out;
+  z-index: 1;
+}
+
+.hover-name.is-active .hover-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hover-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about-subtitle {
@@ -493,7 +538,12 @@ body.menu-open {
   }
 
   .about-intro h1 {
-    font-size: 24px;
+    font-size: 20px;
+  }
+
+  .hover-card {
+    width: 128px;
+    height: 168px;
   }
 
   .about-subtitle {
