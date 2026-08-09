@@ -637,7 +637,7 @@ body.menu-open {
 }
 
 .case-section {
-  padding: 56px 0;
+  padding-block: 56px;
   border-top: 1px solid var(--color-border);
 }
 
@@ -885,7 +885,7 @@ body.menu-open {
   }
 
   .case-section {
-    padding: 40px 0;
+    padding-block: 40px;
   }
 
   .case-columns {
