@@ -76,26 +76,50 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Hero video: force autoplay/loop/mute so it always just loops with no
-  // click needed, even in browsers that are picky about autoplay.
-  document.querySelectorAll('.hero-video').forEach((video) => {
+  // Hero video + project preview videos: force autoplay/loop/mute so they
+  // always just loop with no click needed, even in browsers that are picky
+  // about autoplay. We retry on load, on scroll-into-view, and on the
+  // first user interaction, so it starts as soon as any of those allow it.
+  const autoplayVideos = document.querySelectorAll('.hero-video, .project-video');
+
+  autoplayVideos.forEach((video) => {
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
-    const playPromise = video.play();
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(() => {
-        // Autoplay was blocked; retry once the user interacts with the page.
-        const retry = () => {
-          video.play().catch(() => {});
-          document.removeEventListener('click', retry);
-          document.removeEventListener('scroll', retry);
-        };
-        document.addEventListener('click', retry, { once: true });
-        document.addEventListener('scroll', retry, { once: true });
-      });
-    }
+    video.play().catch(() => {});
   });
+
+  if (autoplayVideos.length) {
+    // Retry once each video actually scrolls into view — some browsers
+    // only allow autoplay once the element is visible on screen.
+    if ('IntersectionObserver' in window) {
+      const videoVisibilityObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.muted = true;
+            entry.target.play().catch(() => {});
+          }
+        });
+      }, { threshold: 0.1 });
+
+      autoplayVideos.forEach((video) => videoVisibilityObserver.observe(video));
+    }
+
+    // Retry on first interaction anywhere on the page, in case autoplay
+    // was blocked entirely until the user engages with the page.
+    const retryAllVideos = () => {
+      autoplayVideos.forEach((video) => {
+        video.muted = true;
+        video.play().catch(() => {});
+      });
+      document.removeEventListener('click', retryAllVideos);
+      document.removeEventListener('scroll', retryAllVideos);
+      document.removeEventListener('touchstart', retryAllVideos);
+    };
+    document.addEventListener('click', retryAllVideos, { once: true });
+    document.addEventListener('scroll', retryAllVideos, { once: true, passive: true });
+    document.addEventListener('touchstart', retryAllVideos, { once: true, passive: true });
+  }
 
   // Case-study preview videos: start playing immediately with sound on.
   // Browsers that block unmusted autoplay force a muted fallback so it
