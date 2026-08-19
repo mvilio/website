@@ -351,6 +351,25 @@ body.menu-open {
   display: block;
   object-fit: cover;
   object-position: center;
+  transform: scale(1);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-media:hover img,
+.project-media:hover video {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-media img,
+  .project-media video {
+    transition: none;
+  }
+
+  .project-media:hover img,
+  .project-media:hover video {
+    transform: scale(1);
+  }
 }
 
 .project-copy {

@@ -271,14 +271,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Hover Name (About page): hovering the "Hi, I'm Markus." heading reveals
-  // a photo that sits behind the text and trails the cursor as it moves.
-  // On touch devices (no real hover), a tap toggles the photo in place instead.
-  const hoverName = document.getElementById('hoverName');
-  const hoverCard = document.getElementById('hoverNameCard');
+  // Hover Name: hovering text like the About page's "Hi, I'm Markus."
+  // heading or the homepage's "Davidson & Company" mention reveals a photo
+  // that sits behind the text and trails the cursor as it moves. On touch
+  // devices (no real hover), a tap toggles the photo in place instead.
+  // Works for every .hover-name element on the page, each with its own
+  // .hover-card photo nested inside it.
+  const hoverNames = document.querySelectorAll('.hover-name');
+  const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  if (hoverName && hoverCard) {
-    const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  hoverNames.forEach((hoverName) => {
+    const hoverCard = hoverName.querySelector('.hover-card');
+    if (!hoverCard) return;
 
     const positionCard = (clientX, clientY) => {
       const rect = hoverName.getBoundingClientRect();
@@ -311,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hoverName.classList.remove('is-active');
       });
     } else {
-      // Tap mode: tapping the heading toggles the photo centered in place;
+      // Tap mode: tapping the text toggles the photo centered in place;
       // tapping elsewhere closes it.
       hoverName.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -325,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hoverName.classList.remove('is-active');
       });
     }
-  }
+  });
 
   const toggleBtn = document.getElementById('navToggle');
   const closeBtn = document.getElementById('navClose');
