@@ -331,6 +331,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Photo puzzle (About page): each tile is a real, draggable puzzle
+  // piece — pick one up and drop it anywhere within the frame. Desktop/
+  // mouse only — the section is hidden outright on mobile via CSS.
+  const puzzle = document.getElementById('aboutPuzzle');
+
+  if (puzzle && supportsHover) {
+    const stage = puzzle;
+    const tiles = Array.from(puzzle.querySelectorAll('.puzzle-tile'));
+
+    tiles.forEach((tile) => {
+      let dragging = false;
+      let startX = 0;
+      let startY = 0;
+      let originLeft = 0;
+      let originTop = 0;
+
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+      const onPointerDown = (e) => {
+        dragging = true;
+        tile.classList.add('is-dragging');
+        tile.setPointerCapture(e.pointerId);
+        startX = e.clientX;
+        startY = e.clientY;
+        originLeft = parseFloat(tile.style.left) || 0;
+        originTop = parseFloat(tile.style.top) || 0;
+      };
+
+      const onPointerMove = (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const maxLeft = stage.clientWidth - tile.offsetWidth;
+        const maxTop = stage.clientHeight - tile.offsetHeight;
+        tile.style.left = `${clamp(originLeft + dx, -24, maxLeft + 24)}px`;
+        tile.style.top = `${clamp(originTop + dy, -24, maxTop + 24)}px`;
+      };
+
+      const onPointerUp = (e) => {
+        dragging = false;
+        tile.classList.remove('is-dragging');
+        if (tile.hasPointerCapture(e.pointerId)) {
+          tile.releasePointerCapture(e.pointerId);
+        }
+      };
+
+      tile.addEventListener('pointerdown', onPointerDown);
+      tile.addEventListener('pointermove', onPointerMove);
+      tile.addEventListener('pointerup', onPointerUp);
+      tile.addEventListener('pointercancel', onPointerUp);
+    });
+  }
+
   const toggleBtn = document.getElementById('navToggle');
   const closeBtn = document.getElementById('navClose');
   const overlay = document.getElementById('navOverlay');

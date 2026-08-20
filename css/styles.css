@@ -453,6 +453,64 @@ body.menu-open {
   object-fit: cover;
 }
 
+.about-intro-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 56px;
+}
+
+.about-text {
+  flex: 1 1 420px;
+  max-width: 560px;
+  min-width: 280px;
+}
+
+/* ---------- About photo puzzle ---------- */
+/* One photo sliced into a square 5x5 grid of tiles via a shared
+   background-image; a few slots are left as faint "ghost" placeholders
+   instead of image tiles, for spacing without leaving a bare gap.
+   Desktop only — each tile can be picked up and dragged around like a
+   real puzzle piece (script.js). Purely decorative. */
+
+.about-puzzle {
+  position: relative;
+  width: 680px;
+  height: 580px;
+  flex-shrink: 0;
+}
+
+.puzzle-tile,
+.puzzle-ghost {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+}
+
+.puzzle-tile {
+  background-image: url('../images/puzzle.png');
+  background-size: 500% 500%;
+  box-shadow: 0 1px 2px rgba(20, 20, 30, 0.1);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.puzzle-tile:active,
+.puzzle-tile.is-dragging {
+  cursor: grabbing;
+  box-shadow: 0 16px 32px rgba(20, 20, 30, 0.24);
+  z-index: 20;
+}
+
+.puzzle-ghost {
+  background: var(--color-pill-bg);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 .about-subtitle {
   font-size: 20px;
   color: var(--color-text-secondary);
@@ -555,6 +613,14 @@ body.menu-open {
 @media (max-width: 860px) {
   .about-intro {
     padding-bottom: 64px;
+  }
+
+  .about-intro-grid {
+    display: block;
+  }
+
+  .about-puzzle {
+    display: none;
   }
 
   .about-intro h1 {
