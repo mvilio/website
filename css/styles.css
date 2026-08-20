@@ -455,7 +455,6 @@ body.menu-open {
 
 .about-intro-grid {
   display: flex;
-  flex-wrap: wrap;
   align-items: flex-start;
   gap: 56px;
 }
@@ -468,27 +467,36 @@ body.menu-open {
 
 /* ---------- About photo puzzle ---------- */
 /* One photo sliced into a square 5x5 grid of tiles via a shared
-   background-image; a few slots are left as faint "ghost" placeholders
-   instead of image tiles, for spacing without leaving a bare gap.
-   Desktop only — each tile can be picked up and dragged around like a
-   real puzzle piece (script.js). Purely decorative. */
+   background-image. Most tiles sit in the right spot, a few are shuffled,
+   and a few sit scattered outside the grid. Desktop only — each tile can
+   be picked up and dragged around like a real puzzle piece (script.js).
+
+   The wrap reserves scaled-down layout space while the puzzle itself
+   keeps its native 680x580 coordinate system and is visually scaled with
+   `transform`, so the tile positions never need recalculating — it just
+   shrinks in place as the page narrows, then disappears outright rather
+   than ever wrapping above or below the text. Purely decorative. */
+
+.about-puzzle-wrap {
+  --puzzle-scale: 1;
+  width: calc(680px * var(--puzzle-scale));
+  height: calc(580px * var(--puzzle-scale));
+  flex-shrink: 0;
+}
 
 .about-puzzle {
   position: relative;
   width: 680px;
   height: 580px;
-  flex-shrink: 0;
+  transform: scale(var(--puzzle-scale));
+  transform-origin: top left;
 }
 
-.puzzle-tile,
-.puzzle-ghost {
+.puzzle-tile {
   position: absolute;
   width: 80px;
   height: 80px;
   border-radius: 8px;
-}
-
-.puzzle-tile {
   background-image: url('../images/puzzle.png');
   background-size: 500% 500%;
   box-shadow: 0 1px 2px rgba(20, 20, 30, 0.1);
@@ -503,12 +511,6 @@ body.menu-open {
   cursor: grabbing;
   box-shadow: 0 16px 32px rgba(20, 20, 30, 0.24);
   z-index: 20;
-}
-
-.puzzle-ghost {
-  background: var(--color-pill-bg);
-  opacity: 0.6;
-  pointer-events: none;
 }
 
 .about-subtitle {
@@ -610,6 +612,33 @@ body.menu-open {
   color: var(--color-text);
 }
 
+/* Puzzle scales down as the page narrows so it can stay beside the
+   text without ever wrapping, then disappears outright once there's no
+   longer room for it next to "Hi, I'm Markus." */
+@media (max-width: 1550px) {
+  .about-puzzle-wrap {
+    --puzzle-scale: 0.78;
+  }
+}
+
+@media (max-width: 1300px) {
+  .about-puzzle-wrap {
+    --puzzle-scale: 0.58;
+  }
+}
+
+@media (max-width: 1100px) {
+  .about-puzzle-wrap {
+    --puzzle-scale: 0.4;
+  }
+}
+
+@media (max-width: 960px) {
+  .about-puzzle-wrap {
+    display: none;
+  }
+}
+
 @media (max-width: 860px) {
   .about-intro {
     padding-bottom: 64px;
@@ -617,10 +646,6 @@ body.menu-open {
 
   .about-intro-grid {
     display: block;
-  }
-
-  .about-puzzle {
-    display: none;
   }
 
   .about-intro h1 {

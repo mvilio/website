@@ -46,6 +46,53 @@
   <main>
     <section class="about-intro container reveal-fade">
       <div class="about-intro-grid">
+        <!-- Photo puzzle: one photo sliced into a square 5x5 grid of
+             tiles. Most tiles sit in their correct spot, a few are
+             shuffled into the wrong slot, and a few sit fully outside the
+             grid as loose, scattered pieces. Desktop only — every tile
+             can be dragged around like a real puzzle piece (see
+             script.js), and the whole thing scales down as the page
+             narrows, disappearing before it would ever wrap. Decorative. -->
+        <div class="about-puzzle-wrap">
+          <div class="about-puzzle" id="aboutPuzzle" aria-hidden="true">
+            <!-- Row 0 -->
+            <div class="puzzle-tile" style="left:0px;top:0px;background-position:100% 100%;"></div>
+            <div class="puzzle-tile" style="left:92px;top:0px;background-position:25% 0%;"></div>
+            <div class="puzzle-tile" style="left:184px;top:0px;background-position:50% 0%;"></div>
+            <div class="puzzle-tile" style="left:368px;top:0px;background-position:100% 0%;"></div>
+
+            <!-- Row 1 -->
+            <div class="puzzle-tile" style="left:92px;top:92px;background-position:50% 75%;"></div>
+            <div class="puzzle-tile" style="left:184px;top:92px;background-position:50% 25%;"></div>
+            <div class="puzzle-tile" style="left:276px;top:92px;background-position:75% 25%;"></div>
+            <div class="puzzle-tile" style="left:368px;top:92px;background-position:100% 25%;"></div>
+
+            <!-- Row 2 -->
+            <div class="puzzle-tile" style="left:0px;top:184px;background-position:0% 50%;"></div>
+            <div class="puzzle-tile" style="left:92px;top:184px;background-position:25% 50%;"></div>
+            <div class="puzzle-tile" style="left:184px;top:184px;background-position:50% 50%;"></div>
+            <div class="puzzle-tile" style="left:276px;top:184px;background-position:75% 50%;"></div>
+
+            <!-- Row 3 -->
+            <div class="puzzle-tile" style="left:0px;top:276px;background-position:0% 75%;"></div>
+            <div class="puzzle-tile" style="left:92px;top:276px;background-position:25% 75%;"></div>
+            <div class="puzzle-tile" style="left:184px;top:276px;background-position:25% 25%;"></div>
+            <div class="puzzle-tile" style="left:368px;top:276px;background-position:100% 75%;"></div>
+
+            <!-- Row 4 -->
+            <div class="puzzle-tile" style="left:92px;top:368px;background-position:25% 100%;"></div>
+            <div class="puzzle-tile" style="left:184px;top:368px;background-position:50% 100%;"></div>
+            <div class="puzzle-tile" style="left:276px;top:368px;background-position:75% 100%;"></div>
+            <div class="puzzle-tile" style="left:368px;top:368px;background-position:0% 0%;"></div>
+
+            <!-- Scattered pieces, off the grid -->
+            <div class="puzzle-tile" style="left:520px;top:10px;background-position:62.5% 12.5%;"></div>
+            <div class="puzzle-tile" style="left:470px;top:170px;background-position:37.5% 62.5%;"></div>
+            <div class="puzzle-tile" style="left:580px;top:330px;background-position:87.5% 62.5%;"></div>
+            <div class="puzzle-tile" style="left:130px;top:480px;background-position:12.5% 87.5%;"></div>
+          </div>
+        </div>
+
         <div class="about-text">
           <h1 class="hover-name" id="hoverName" tabindex="0" aria-describedby="hoverNameCard">
             <span class="hover-card" id="hoverNameCard" aria-hidden="true">
@@ -69,55 +116,6 @@
               <path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4H4.5A1.5 1.5 0 0 0 3 5.5v10A1.5 1.5 0 0 0 4.5 17H8" stroke="currentColor" stroke-width="1.6"/>
             </svg>
           </button>
-        </div>
-
-        <!-- Photo puzzle: one photo sliced into a square 5x5 grid of
-             tiles (a few ghost slots left faint/empty for spacing). Most
-             tiles sit in their correct spot, a few are shuffled into the
-             wrong slot, and a few sit fully outside the grid as loose,
-             scattered pieces. Desktop only — every tile can be dragged
-             around like a real puzzle piece (see script.js). Decorative. -->
-        <div class="about-puzzle" id="aboutPuzzle" aria-hidden="true">
-          <!-- Row 0 -->
-          <div class="puzzle-tile" style="left:0px;top:0px;background-position:100% 100%;"></div>
-          <div class="puzzle-tile" style="left:92px;top:0px;background-position:25% 0%;"></div>
-          <div class="puzzle-tile" style="left:184px;top:0px;background-position:50% 0%;"></div>
-          <div class="puzzle-ghost" style="left:276px;top:0px;"></div>
-          <div class="puzzle-tile" style="left:368px;top:0px;background-position:100% 0%;"></div>
-
-          <!-- Row 1 -->
-          <div class="puzzle-ghost" style="left:0px;top:92px;"></div>
-          <div class="puzzle-tile" style="left:92px;top:92px;background-position:50% 75%;"></div>
-          <div class="puzzle-tile" style="left:184px;top:92px;background-position:50% 25%;"></div>
-          <div class="puzzle-tile" style="left:276px;top:92px;background-position:75% 25%;"></div>
-          <div class="puzzle-tile" style="left:368px;top:92px;background-position:100% 25%;"></div>
-
-          <!-- Row 2 -->
-          <div class="puzzle-tile" style="left:0px;top:184px;background-position:0% 50%;"></div>
-          <div class="puzzle-tile" style="left:92px;top:184px;background-position:25% 50%;"></div>
-          <div class="puzzle-tile" style="left:184px;top:184px;background-position:50% 50%;"></div>
-          <div class="puzzle-tile" style="left:276px;top:184px;background-position:75% 50%;"></div>
-          <div class="puzzle-ghost" style="left:368px;top:184px;"></div>
-
-          <!-- Row 3 -->
-          <div class="puzzle-tile" style="left:0px;top:276px;background-position:0% 75%;"></div>
-          <div class="puzzle-tile" style="left:92px;top:276px;background-position:25% 75%;"></div>
-          <div class="puzzle-tile" style="left:184px;top:276px;background-position:25% 25%;"></div>
-          <div class="puzzle-ghost" style="left:276px;top:276px;"></div>
-          <div class="puzzle-tile" style="left:368px;top:276px;background-position:100% 75%;"></div>
-
-          <!-- Row 4 -->
-          <div class="puzzle-ghost" style="left:0px;top:368px;"></div>
-          <div class="puzzle-tile" style="left:92px;top:368px;background-position:25% 100%;"></div>
-          <div class="puzzle-tile" style="left:184px;top:368px;background-position:50% 100%;"></div>
-          <div class="puzzle-tile" style="left:276px;top:368px;background-position:75% 100%;"></div>
-          <div class="puzzle-tile" style="left:368px;top:368px;background-position:0% 0%;"></div>
-
-          <!-- Scattered pieces, off the grid -->
-          <div class="puzzle-tile" style="left:520px;top:10px;background-position:62.5% 12.5%;"></div>
-          <div class="puzzle-tile" style="left:470px;top:170px;background-position:37.5% 62.5%;"></div>
-          <div class="puzzle-tile" style="left:580px;top:330px;background-position:87.5% 62.5%;"></div>
-          <div class="puzzle-tile" style="left:130px;top:480px;background-position:12.5% 87.5%;"></div>
         </div>
       </div>
     </section>

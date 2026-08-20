@@ -361,8 +361,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const onPointerMove = (e) => {
         if (!dragging) return;
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
+        // The puzzle is visually scaled down (transform: scale) on
+        // narrower pages while its internal coordinate system stays
+        // fixed at 680x580, so screen-space pointer movement has to be
+        // converted back into that internal scale before it's applied.
+        const scale = stage.getBoundingClientRect().width / stage.clientWidth;
+        const dx = (e.clientX - startX) / scale;
+        const dy = (e.clientY - startY) / scale;
         const maxLeft = stage.clientWidth - tile.offsetWidth;
         const maxTop = stage.clientHeight - tile.offsetHeight;
         tile.style.left = `${clamp(originLeft + dx, -24, maxLeft + 24)}px`;
