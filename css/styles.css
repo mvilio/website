@@ -456,7 +456,7 @@ body.menu-open {
 .about-intro-grid {
   display: flex;
   align-items: flex-start;
-  gap: 56px;
+  gap: 88px;
 }
 
 .about-text {
@@ -472,22 +472,22 @@ body.menu-open {
    be picked up and dragged around like a real puzzle piece (script.js).
 
    The wrap reserves scaled-down layout space while the puzzle itself
-   keeps its native 680x580 coordinate system and is visually scaled with
+   keeps its native 650x540 coordinate system and is visually scaled with
    `transform`, so the tile positions never need recalculating — it just
    shrinks in place as the page narrows, then disappears outright rather
    than ever wrapping above or below the text. Purely decorative. */
 
 .about-puzzle-wrap {
   --puzzle-scale: 1;
-  width: calc(680px * var(--puzzle-scale));
-  height: calc(580px * var(--puzzle-scale));
+  width: calc(650px * var(--puzzle-scale));
+  height: calc(540px * var(--puzzle-scale));
   flex-shrink: 0;
 }
 
 .about-puzzle {
   position: relative;
-  width: 680px;
-  height: 580px;
+  width: 650px;
+  height: 540px;
   transform: scale(var(--puzzle-scale));
   transform-origin: top left;
 }
