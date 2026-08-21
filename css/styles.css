@@ -360,6 +360,10 @@ body.menu-open {
   transform: scale(1.06);
 }
 
+.project-media-img--top {
+  object-position: center 20% !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .project-media img,
   .project-media video {
