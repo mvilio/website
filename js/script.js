@@ -155,6 +155,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Vancouver pill: shows the full "Vancouver, British Columbia" on any
+  // normal browser/desktop width, and swaps to the short "Vancouver, BC"
+  // only on genuinely narrow phone screens, so the line never wraps
+  // awkwardly. A single element with its text swapped (rather than two
+  // separate pills) avoids any chance of both versions rendering at once.
+  const vancouverTextEl = document.querySelector('.pill-text[data-full-text]');
+  const vancouverMediaQuery = window.matchMedia('(max-width: 420px)');
+
+  const syncVancouverText = () => {
+    if (!vancouverTextEl) return;
+    const isNarrow = vancouverMediaQuery.matches;
+    vancouverTextEl.textContent = isNarrow
+      ? vancouverTextEl.dataset.shortText
+      : vancouverTextEl.dataset.fullText;
+  };
+
+  syncVancouverText();
+  vancouverMediaQuery.addEventListener('change', syncVancouverText);
+
   // Click-to-retype: clicking the "Product Designer" or "Vancouver,
   // British Columbia" pill retypes its text like a typewriter.
   const typePills = document.querySelectorAll('.pill-type');
@@ -177,14 +196,15 @@ document.addEventListener('DOMContentLoaded', () => {
   typePills.forEach((pill) => {
     const textEl = pill.querySelector('.pill-text');
     if (!textEl) return;
-    const originalText = textEl.textContent;
-    let animating = false;
 
     const trigger = () => {
-      if (animating) return;
-      animating = true;
-      typeText(textEl, originalText, 45, () => {
-        animating = false;
+      if (pill.dataset.animating === 'true') return;
+      pill.dataset.animating = 'true';
+      // Re-read the current text each click, since the Vancouver pill's
+      // text can change between full/short at different screen widths.
+      const currentText = textEl.textContent;
+      typeText(textEl, currentText, 45, () => {
+        pill.dataset.animating = 'false';
       });
     };
 
