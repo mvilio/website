@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <svg class="custom-cursor-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M4 12L12 4M12 4H5.5M12 4V10.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
+      <svg class="custom-cursor-plus" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 2.5V13.5M2.5 8H13.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
     `;
     document.body.appendChild(cursorEl);
 
@@ -40,15 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const isCursorTarget = (el) => el.closest(
       'a[href="jazzdor.html"], a[href="police-museum.html"], a[href="https://davidson-co.com/"]'
     );
+    const isVideoTarget = (el) => el.closest('#heroVideoWrap');
 
     document.addEventListener('mouseover', (e) => {
-      if (isCursorTarget(e.target)) {
+      if (isVideoTarget(e.target)) {
+        cursorEl.classList.add('is-video');
+      } else if (isCursorTarget(e.target)) {
         cursorEl.classList.add('is-hover');
       }
     });
 
     document.addEventListener('mouseout', (e) => {
-      if (isCursorTarget(e.target)) {
+      if (isVideoTarget(e.target)) {
+        cursorEl.classList.remove('is-video');
+      } else if (isCursorTarget(e.target)) {
         cursorEl.classList.remove('is-hover');
       }
     });

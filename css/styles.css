@@ -1340,13 +1340,31 @@ body.video-modal-open {
   transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.custom-cursor.is-hover .custom-cursor-dot {
+.custom-cursor-plus {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-cursor.is-hover .custom-cursor-dot,
+.custom-cursor.is-video .custom-cursor-dot {
   width: 54px;
   height: 54px;
   margin: -27px 0 0 -27px;
 }
 
 .custom-cursor.is-hover .custom-cursor-arrow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.custom-cursor.is-video .custom-cursor-plus {
   opacity: 1;
   transform: scale(1);
 }
