@@ -398,6 +398,17 @@ body.menu-open {
   margin-top: 18px;
 }
 
+.project-note {
+  font-size: 13px !important;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  opacity: 0.75;
+  padding-left: 12px;
+  border-left: 2px solid var(--color-border);
+  max-width: 42ch !important;
+  margin-top: 30px !important;
+}
+
 /* ---------- About page ---------- */
 
 .about-intro {
