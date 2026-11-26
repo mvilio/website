@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const isCursorTarget = (el) => el.closest(
-      'a[href="jazzdor.html"], a[href="police-museum.html"], a[href="https://davidson-co.com/"]'
+      'a[href="jazzdor.html"], a[href="police-museum.html"], a[href="davidson.html"]'
     );
     const isVideoTarget = (el) => el.closest('#heroVideoWrap');
 

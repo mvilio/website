@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Davidson &amp; Company LLP Website — Markus Vilio</title>
+  <meta name="description" content="Davidson & Company LLP Website: helping an accounting firm that doesn't act like one look, sound, and feel like itself.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="alternate icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* v5 only: the small labeled detail grid and the smaller More grid. */
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 32px; margin-top: 8px; }
+    @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
+    .more-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    @media (max-width: 768px) { .more-grid { grid-template-columns: 1fr; } }
+    .detail-item img { width: 100%; height: auto; display: block; border-radius: 12px; }
+    .detail-item h3 { font-size: 16px; font-weight: 600; margin: 16px 0 6px; }
+    .detail-item p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin: 0; }
+    .more-caption { font-size: 14px; color: var(--color-text-secondary); margin: 12px 0 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Markus Vilio</a>
+
+      <nav class="nav-desktop" aria-label="Primary">
+        <a href="index.html#work" class="nav-link">Work</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="nav-overlay" id="navOverlay">
+    <button class="nav-close" id="navClose" aria-label="Close menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <nav class="nav-overlay-links" aria-label="Mobile primary">
+      <a href="index.html#work">Work</a>
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="case-hero container reveal-fade">
+      <a href="index.html#work" class="back-link">&larr; Back to work</a>
+
+      <h1>Davidson &amp; Company LLP Website</h1>
+      <p class="case-subtitle">Helping an accounting firm that doesn&rsquo;t act like one look, sound, and feel like itself.</p>
+
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="label">Timeline</div>
+          <div class="value">2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero video: Davidson brand animation (We lean in to Creativity / Innovation / Ambition, Local Experts, Global Connections) -->
+    <section class="container reveal-fade" style="padding-bottom: 64px;">
+      <video class="case-video" id="davidsonVideo" autoplay muted playsinline disablepictureinpicture poster="images/davidson-motion-poster.jpg" controls controlsList="nodownload noremoteplayback" oncontextmenu="return false">
+        <source src="images/davidson-motion.mp4" type="video/mp4">
+      </video>
+    </section>
+
+    <section class="case-section container reveal-fade" style="border-top: none; padding-top: 0;">
+      <h2>A bold new look</h2>
+      <p class="lede">When this project kicked off, Davidson&rsquo;s website made visitors work for answers. Services, people, and insights were hard to find, and the way to get in touch felt generic and unclear. For a firm that helps clients navigate complexity with confidence, that was the problem to solve.</p>
+      <p>The redesign was a chance to build one clear structure, from the homepage to services, industries, people, careers, and The Bottom Line. I helped lead the redesign from start to finish. I mapped the site structure, used Figma to plan how the design system applies to each page, and then built and refined those pages in WordPress.</p>
+    </section>
+
+    <section class="case-section container reveal-fade">
+      <h2>The right person, in a few clicks</h2>
+      <p class="lede">People come to a professional services site with a question in mind. Can this firm help me? Who would I work with? How do I reach them?</p>
+      <p>My goal was to help any visitor answer &ldquo;Is this the right firm for me?&rdquo; in a few clicks. That visitor could be a client looking for expertise, a candidate getting a feel for the culture, or a referral partner looking for the right contact.</p>
+    </section>
+
+    <section class="case-section container reveal-fade">
+      <h2>Unmistakably Davidson</h2>
+      <p class="lede">Most people don&rsquo;t picture an accounting firm as a place for brand, creativity, and big ideas. Davidson is different, and the site needed to show it. It leads with storytelling, real people, and a confident voice instead of the usual corporate look.</p>
+      <p>That personality is built into the design system. Headlines pair two weights, and client categories are colour-coded. Every page type follows a set of modules, and each module has a clear purpose, defined content, and set specs. The result feels like one firm, not a collection of pages, and every new page starts from a proven structure.</p>
+      <p>The homepage opens with a full-width banner and moves straight into four colour-coded client categories. Visitors choose the one that fits them and go directly to relevant content, so every visit has a clear starting point.</p>
+    </section>
+
+    <figure class="case-media-block container reveal-fade">
+      <img src="images/davidson-v5-service-crop.jpg" alt="A Davidson client type page: What you have built should go where you intend">
+      <figcaption>A client type page, organized around who the visitor is, not the firm&rsquo;s service lines.</figcaption>
+    </figure>
+
+    <section class="case-section container reveal-fade">
+      <h2>The details that carry it</h2>
+      <p class="lede">The system shows up in the small moments: a profile that reads like a person, a form that asks one clear question at a time, a page that holds up on a phone.</p>
+
+      <div class="detail-grid">
+        <div class="detail-item">
+          <img src="images/davidson-v5-profile-crop.jpg" alt="A Davidson team member profile page">
+          <h3>One structure, every person</h3>
+          <p>Every profile follows the same structure: name, title, bio, and tags for role, location, industries, and service lines. Clients hire people, not firms, and the directory lets visitors search and filter to the right one.</p>
+        </div>
+
+        <div class="detail-item">
+          <img src="images/davidson-contact.jpg" alt="Davidson contact page: Connect with the right people">
+          <h3>A clear next step</h3>
+          <p>Each inquiry type gets its own path, in three steps, with its own wording and form. The right message reaches the right person, with less back-and-forth.</p>
+        </div>
+
+        <div class="detail-item">
+          <img src="images/davidson-careers.jpg" alt="Davidson careers page: We retired the accountant stereotype">
+          <h3>Culture before the job board</h3>
+          <p>The careers page leads with a human message, &ldquo;We retired the accountant stereotype,&rdquo; and then moves to open roles. Candidates get a sense of belonging first.</p>
+        </div>
+
+        <div class="detail-item">
+          <img src="images/davidson-articles-listing.jpg" alt="The Bottom Line article listing">
+          <h3>Reading that leads on</h3>
+          <p>The Bottom Line uses one consistent article layout, with category and tags, so one read leads to the next instead of ending there.</p>
+        </div>
+
+        <div class="detail-item">
+          <img src="images/davidson-v5-people-desktop-mobile-crop.jpg" alt="Davidson Our People page on desktop and mobile side by side">
+          <h3>Checked on a phone</h3>
+          <p>Many visitors arrive on their phones, so I checked how each page looked on mobile after every layout change. Spacing, button placement, and text size got extra attention.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section container reveal-fade">
+      <h2>Looking forward</h2>
+      <p class="lede">The best design work keeps going after launch. It grows with the people who use it and the team that looks after it. That&rsquo;s how I want to approach every project from here.</p>
+      <p>Davidson now has a foundation to build on. New pages start from a proven structure, and the next person in this role has a playbook to start from. The bigger story is just getting started: an accounting firm can be a place where brand, creativity, and big ideas belong.</p>
+    </section>
+
+    <!-- Wireframe, prototype, and live page: add your screenshot as images/davidson-wireframe-prototype-live.png to show it here. -->
+
+    <section class="case-section container reveal-fade">
+      <h2>More from Davidson</h2>
+      <p class="lede">The website was the main project, but my work went further. I rebuilt how Davidson plans content with a new content calendar, and I wrote staff bios and site copy in the Davidson voice.</p>
+
+      <div class="detail-grid more-grid">
+        <div class="detail-item">
+          <img src="images/davidson-more-ubc.jpg" alt="Davidson event graphic for UBC's Network in Numbers: Where Numbers Meet People">
+          <p class="more-caption">Content and social</p>
+        </div>
+
+        <div class="detail-item">
+          <img src="images/davidson-more-diwali.jpg" alt="Davidson Diwali post: a calla lily and diya on a dusty-rose background">
+          <p class="more-caption">Culture, designed</p>
+        </div>
+
+        <div class="detail-item">
+          <img src="images/davidson-more-globe.jpg" alt="Flat map of the Davidson globe-network video, with teal lines from Vancouver to twenty countries">
+          <p class="more-caption">Motion</p>
+        </div>
+
+        <div class="detail-item">
+          <img src="images/davidson-more-careerweek.jpg" alt="Two people at the Davidson booth during CPABC Career Week, holding teal foam fingers">
+          <p class="more-caption">On campus</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container reveal-fade" style="padding-bottom: 24px;">
+      <a href="index.html#work" class="back-link" style="margin-bottom: 0;">&larr; Back to work</a>
+    </div>
+
+    <!-- Footer / Contact -->
+    <footer class="site-footer container reveal-fade" id="contact" style="padding-top: 96px;">
+      <h2>Get in Touch</h2>
+      <div class="footer-icons">
+        <a href="https://www.linkedin.com/in/markusv19" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="icon-circle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3 8.5h4V21H3V8.5Zm6.5 0h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-6.03c0-1.44-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21h-4V8.5Z" fill="currentColor"/></svg>
+        </a>
+        <a href="mailto:viliomarkus@gmail.com" aria-label="Email Me" class="icon-circle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18v11H3v-11Zm1.2 1 7.8 5.6L19.8 7.5" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

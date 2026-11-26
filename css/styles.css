@@ -827,6 +827,49 @@ body.menu-open {
   font-weight: 590;
 }
 
+/* Decision sub-headings on the Davidson case page */
+.decision-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+  color: var(--color-text);
+}
+
+/* Visitor type cards on the Davidson case page */
+.visitor-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 860px;
+}
+
+.visitor-card {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.visitor-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.visitor-card p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .visitor-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 .case-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
