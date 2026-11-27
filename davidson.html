@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="css/styles.css">
   <style>
     /* v5 only: the small labeled detail grid and the smaller More grid. */
-    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 32px; margin-top: 8px; }
+    .detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 32px; margin-top: 8px; }
+    .detail-grid:not(.more-grid) .detail-item img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
     @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
     .more-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
     @media (max-width: 768px) { .more-grid { grid-template-columns: 1fr; } }
@@ -22,7 +23,7 @@
     /* v5 rev5 only: this page's own layout, different from the other case pages. */
     .davidson-page main { padding-top: 0; }
     .davidson-hero {
-      background-color: #004E51;
+      background-color: #06595C;
       min-height: 82vh;
       border-bottom: 1px solid rgba(255, 255, 255, 0.55);
       position: relative;
@@ -42,6 +43,7 @@
     .site-header.is-over-dark .nav-link { color: #fff; transition: color 0.3s ease; }
     .site-header.is-over-dark .nav-toggle span { background: #fff; }
     .site-header .logo, .site-header .nav-link { transition: color 0.3s ease; }
+    .davidson-site-link { display: inline-block; margin-top: 28px; font-size: 16px; color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; }
     .davidson-intro { border-top: none; padding-top: 64px; }
     .davidson-intro-grid { display: grid; grid-template-columns: minmax(280px, 5fr) 7fr; gap: 64px; align-items: start; }
     @media (max-width: 768px) { .davidson-intro-grid { grid-template-columns: 1fr; gap: 24px; } }
@@ -50,7 +52,7 @@
     .davidson-intro-credit .value { font-size: 16px; color: var(--color-text-secondary); }
     .davidson-page .case-section { border-top: none; }
     .davidson-page .case-section.more-from { border-top: 1px solid var(--color-border); }
-    .davidson-page .case-section h2 { font-size: 28px; font-weight: 400; }
+    .davidson-page .case-section h2 { font-size: 18px; font-weight: 400; }
     .davidson-intro-body p { font-size: 18px; line-height: 1.65; color: var(--color-text); margin: 0 0 18px; max-width: 62ch; }
     .davidson-intro-body p:last-child { margin-bottom: 0; }
     .davidson-video-full { padding-bottom: 64px; }
@@ -91,7 +93,7 @@
   </div>
 
   <main>
-    <!-- Hero: Davidson logo animation on the exact video teal, full-bleed, with a thin white line at the bottom as a scroll cue. Plays once on load; not clickable. -->
+    <!-- Hero: Davidson logo animation, full-bleed, with a thin white line at the bottom as a scroll cue. Plays on load, then replays about every 40 seconds; not clickable. Background is the video's displayed teal (#06595C) so the sides match the video exactly. -->
     <section class="davidson-hero reveal-fade" id="davidsonHero" aria-label="Davidson &amp; Company LLP, member of Nexia">
       <video id="davidsonHeroVideo" autoplay muted playsinline disablepictureinpicture preload="auto" poster="images/davidson-hero-poster.jpg" oncontextmenu="return false">
         <source src="images/davidson-hero.mp4" type="video/mp4">
@@ -107,6 +109,7 @@
             <div class="label">Timeline</div>
             <div class="value">2026</div>
           </div>
+          <a class="davidson-site-link" href="https://davidson-co.com/" target="_blank" rel="noopener noreferrer">Visit the live site &nearr;</a>
         </div>
 
         <div class="davidson-intro-body">
@@ -157,12 +160,6 @@
       <p class="lede">The system shows up in the small moments: a profile that reads like a person, a form that asks one clear question at a time, a page that holds up on a phone.</p>
 
       <div class="detail-grid">
-        <div class="detail-item">
-          <img src="images/davidson-v5-profile-crop.jpg" alt="A Davidson team member profile page">
-          <h3>One structure, every person</h3>
-          <p>Every profile follows the same structure: name, title, bio, and tags for role, location, industries, and service lines. Clients hire people, not firms, and the directory lets visitors search and filter to the right one.</p>
-        </div>
-
         <div class="detail-item">
           <img src="images/davidson-contact.jpg" alt="Davidson contact page: Connect with the right people">
           <h3>A clear next step</h3>
@@ -256,6 +253,15 @@
       window.addEventListener('scroll', update, { passive: true });
       window.addEventListener('resize', update);
       update();
+    })();
+    // Hero logo video: replay about every 40 seconds (6s video, then hold the
+    // end frame for ~34s, then play again).
+    (function () {
+      var heroVideo = document.getElementById('davidsonHeroVideo');
+      if (!heroVideo) return;
+      heroVideo.addEventListener('ended', function () {
+        setTimeout(function () { heroVideo.play(); }, 34000);
+      });
     })();
   </script>
 </body>
