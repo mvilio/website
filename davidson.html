@@ -55,10 +55,32 @@
     .davidson-page .case-section h2 { font-size: 20px; font-weight: 400; }
     .davidson-page .case-section > p { font-size: 20px; }
     .davidson-page .davidson-intro-body p { font-size: 20px; }
+    /* All page text one size (20px): intro title, Timeline, site link, detail headings/descriptions, More captions. */
+    .davidson-page .davidson-intro-title,
+    .davidson-page .davidson-intro-credit .label,
+    .davidson-page .davidson-intro-credit .value,
+    .davidson-page .davidson-site-link,
+    .davidson-page .detail-item h3,
+    .davidson-page .detail-item p,
+    .davidson-page .more-caption { font-size: 20px; }
     .davidson-intro-body p { font-size: 18px; line-height: 1.65; color: var(--color-text); margin: 0 0 18px; max-width: 62ch; }
     .davidson-intro-body p:last-child { margin-bottom: 0; }
     .davidson-video-full { padding-bottom: 64px; }
     .davidson-video-full .case-video { max-width: none; aspect-ratio: auto; border-radius: 24px; pointer-events: none; }
+    /* Light-grey placeholders for images still to come (labelled image 1, image 2, ...). */
+    .img-placeholder { background: #E8E8E8; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #8A8A8A; font-size: 20px; }
+    .img-placeholder--tall { aspect-ratio: 4 / 5; }
+    .img-placeholder--wide { aspect-ratio: 16 / 9; margin-top: 24px; }
+    .mockup-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 24px; }
+    @media (max-width: 768px) { .mockup-grid { grid-template-columns: repeat(2, 1fr); } }
+    .wireflow-caption { margin-top: 12px; }
+    /* Full-width page slider: each slide is 85% wide so a little of the next one peeks in. */
+    .page-slider-section { padding-bottom: 64px; }
+    .page-slider { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .page-slider::-webkit-scrollbar { display: none; }
+    .page-slide { flex: 0 0 85%; scroll-snap-align: start; margin: 0; }
+    .page-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: 14px; display: block; }
+    .page-slide figcaption { margin-top: 12px; font-size: 20px; color: var(--color-text-secondary); }
   </style>
 </head>
 <body class="davidson-page">
@@ -140,6 +162,19 @@
     </section>
 
     <section class="case-section container reveal-fade">
+      <h2>Starting on paper</h2>
+      <p class="lede">Before anything was built, the pages started as quick paper sketches &mdash; low-fidelity mockups to work out the structure before the design system took over.</p>
+      <div class="mockup-grid">
+        <div class="img-placeholder img-placeholder--tall">image 1</div>
+        <div class="img-placeholder img-placeholder--tall">image 2</div>
+        <div class="img-placeholder img-placeholder--tall">image 3</div>
+        <div class="img-placeholder img-placeholder--tall">image 4</div>
+      </div>
+      <div class="img-placeholder img-placeholder--wide">image 5</div>
+      <p class="wireflow-caption">The contact form, mapped out as a user flow before it was built.</p>
+    </section>
+
+    <section class="case-section container reveal-fade">
       <div class="davidson-intro-grid">
         <div>
           <h2>The right person, in a few clicks</h2>
@@ -171,38 +206,63 @@
         <div class="detail-item">
           <img src="images/davidson-contact.jpg" alt="Davidson contact page: Connect with the right people">
           <h3>A clear next step</h3>
-          <p>Each inquiry type gets its own path, in three steps, with its own wording and form. The right message reaches the right person, with less back-and-forth.</p>
+          <p>Every inquiry type gets its own three-step path and form.</p>
         </div>
 
         <div class="detail-item">
           <img src="images/davidson-careers.jpg" alt="Davidson careers page: We retired the accountant stereotype">
           <h3>Culture before the job board</h3>
-          <p>The careers page leads with a human message, &ldquo;We retired the accountant stereotype,&rdquo; and then moves to open roles. Candidates get a sense of belonging first.</p>
+          <p>Leads with &ldquo;We retired the accountant stereotype,&rdquo; then open roles.</p>
         </div>
 
         <div class="detail-item">
           <img src="images/davidson-articles-listing.jpg" alt="The Bottom Line article listing">
           <h3>Reading that leads on</h3>
-          <p>The Bottom Line uses one consistent article layout, with category and tags, so one read leads to the next instead of ending there.</p>
+          <p>One article layout, so one read leads to the next.</p>
         </div>
 
         <div class="detail-item">
           <img src="images/davidson-v5-people-desktop-mobile-crop.jpg" alt="Davidson Our People page on desktop and mobile side by side">
           <h3>Checked on a phone</h3>
-          <p>Many visitors arrive on their phones, so I checked how each page looked on mobile after every layout change. Spacing, button placement, and text size got extra attention.</p>
+          <p>Checked on mobile after every layout change.</p>
         </div>
 
         <div class="detail-item">
           <img src="images/davidson-v5-industries-crop.jpg" alt="Davidson Industries page: Some industries have a playbook. We like the ones that don't.">
           <h3>Chasing the unknown</h3>
-          <p>The industries page leads with the sectors where Davidson showed up early &mdash; Mining, Crypto, Cannabis &mdash; and makes it easy to find the team that knows your world.</p>
+          <p>Leads with Mining, Crypto, and Cannabis &mdash; the sectors Davidson knows best.</p>
         </div>
 
         <div class="detail-item">
           <img src="images/davidson-v5-homepage-crop.jpg" alt="Davidson homepage: We lean in to Creativity">
           <h3>Leads with the brand</h3>
-          <p>The homepage opens with the firm&rsquo;s personality &mdash; the creativity message and the Nexia global story &mdash; before it ever asks you to pick a service. Visitors meet Davidson before they meet the menu.</p>
+          <p>The homepage leads with personality before it asks you to pick a service.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="page-slider-section reveal-fade">
+      <div class="page-slider">
+        <figure class="page-slide">
+          <img src="images/davidson-v5-homepage-crop.jpg" alt="Davidson homepage">
+          <figcaption>Homepage</figcaption>
+        </figure>
+        <figure class="page-slide">
+          <img src="images/davidson-v5-industries-crop.jpg" alt="Davidson Industries page">
+          <figcaption>Industries</figcaption>
+        </figure>
+        <figure class="page-slide">
+          <img src="images/davidson-v5-people-top-crop.jpg" alt="Davidson Our People page">
+          <figcaption>Our People</figcaption>
+        </figure>
+        <figure class="page-slide">
+          <img src="images/davidson-careers.jpg" alt="Davidson Careers page">
+          <figcaption>Careers</figcaption>
+        </figure>
+        <figure class="page-slide">
+          <img src="images/davidson-contact.jpg" alt="Davidson Contact page">
+          <figcaption>Contact</figcaption>
+        </figure>
       </div>
     </section>
 
