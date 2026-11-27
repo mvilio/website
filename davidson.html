@@ -19,12 +19,48 @@
     .detail-item h3 { font-size: 16px; font-weight: 600; margin: 16px 0 6px; }
     .detail-item p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin: 0; }
     .more-caption { font-size: 14px; color: var(--color-text-secondary); margin: 12px 0 0; }
+    /* v5 rev5 only: this page's own layout, different from the other case pages. */
+    .davidson-page main { padding-top: 0; }
+    .davidson-hero {
+      background-color: #004E51;
+      min-height: 82vh;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+      position: relative;
+      overflow: hidden;
+    }
+    .davidson-hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      display: block;
+    }
+    @media (max-width: 768px) { .davidson-hero { min-height: 55vh; } }
+    .site-header.is-over-dark .logo,
+    .site-header.is-over-dark .nav-link { color: #fff; transition: color 0.3s ease; }
+    .site-header.is-over-dark .nav-toggle span { background: #fff; }
+    .site-header .logo, .site-header .nav-link { transition: color 0.3s ease; }
+    .davidson-intro { border-top: none; padding-top: 64px; }
+    .davidson-intro-grid { display: grid; grid-template-columns: minmax(280px, 5fr) 7fr; gap: 64px; align-items: start; }
+    @media (max-width: 768px) { .davidson-intro-grid { grid-template-columns: 1fr; gap: 24px; } }
+    .davidson-intro-title { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 28px; }
+    .davidson-intro-credit .label { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .davidson-intro-credit .value { font-size: 16px; color: var(--color-text-secondary); }
+    .davidson-page .case-section { border-top: none; }
+    .davidson-page .case-section.more-from { border-top: 1px solid var(--color-border); }
+    .davidson-page .case-section h2 { font-size: 28px; font-weight: 400; }
+    .davidson-intro-body p { font-size: 18px; line-height: 1.65; color: var(--color-text); margin: 0 0 18px; max-width: 62ch; }
+    .davidson-intro-body p:last-child { margin-bottom: 0; }
+    .davidson-video-full { padding-bottom: 64px; }
+    .davidson-video-full .case-video { max-width: none; aspect-ratio: auto; border-radius: 24px; pointer-events: none; }
   </style>
 </head>
-<body>
+<body class="davidson-page">
 
-  <!-- Header -->
-  <header class="site-header">
+  <!-- Header: starts white over the dark logo hero; the script below switches it back once you scroll past. -->
+  <header class="site-header is-over-dark">
     <div class="container header-inner">
       <a href="index.html" class="logo">Markus Vilio</a>
 
@@ -55,31 +91,47 @@
   </div>
 
   <main>
-    <section class="case-hero container reveal-fade">
-      <a href="index.html#work" class="back-link">&larr; Back to work</a>
+    <!-- Hero: Davidson logo animation on the exact video teal, full-bleed, with a thin white line at the bottom as a scroll cue. Plays once on load; not clickable. -->
+    <section class="davidson-hero reveal-fade" id="davidsonHero" aria-label="Davidson &amp; Company LLP, member of Nexia">
+      <video id="davidsonHeroVideo" autoplay muted playsinline disablepictureinpicture preload="auto" poster="images/davidson-hero-poster.jpg" oncontextmenu="return false">
+        <source src="images/davidson-hero.mp4" type="video/mp4">
+      </video>
+    </section>
 
-      <h1>Davidson &amp; Company LLP Website</h1>
-      <p class="case-subtitle">Helping an accounting firm that doesn&rsquo;t act like one look, sound, and feel like itself.</p>
+    <!-- Intro, YouTube-style two-column: title and timeline on the left, longer intro on the right. -->
+    <section class="case-section container reveal-fade davidson-intro">
+      <div class="davidson-intro-grid">
+        <div>
+          <h1 class="davidson-intro-title">Davidson &amp; Company LLP Website</h1>
+          <div class="davidson-intro-credit">
+            <div class="label">Timeline</div>
+            <div class="value">2026</div>
+          </div>
+        </div>
 
-      <div class="case-meta">
-        <div class="case-meta-item">
-          <div class="label">Timeline</div>
-          <div class="value">2026</div>
+        <div class="davidson-intro-body">
+          <p>As a brand design intern at Davidson, I got to touch almost every part of how the firm shows up &mdash; the website, the social posts, the copy, the motion work. Of everything I worked on, the website redesign felt the most expansive, because the site is where all of it comes together. My goal was to bring greater clarity and consistency to it, and a distinct sense of Davidson&rsquo;s personality to every page. It was about more than a fresh look; it was about giving the firm a site that finally feels like itself.</p>
         </div>
       </div>
     </section>
 
-    <!-- Hero video: Davidson brand animation (We lean in to Creativity / Innovation / Ambition, Local Experts, Global Connections) -->
-    <section class="container reveal-fade" style="padding-bottom: 64px;">
-      <video class="case-video" id="davidsonVideo" autoplay muted playsinline disablepictureinpicture poster="images/davidson-motion-poster.jpg" controls controlsList="nodownload noremoteplayback" oncontextmenu="return false">
+    <!-- Hero video: Davidson website carousel (homepage, service, industries, people, careers, contact). Autoplays and loops, no controls, like a moving image. -->
+    <section class="davidson-video-full container reveal-fade">
+      <video class="case-video" id="davidsonVideo" autoplay muted loop playsinline disablepictureinpicture poster="images/davidson-motion-poster.jpg" oncontextmenu="return false">
         <source src="images/davidson-motion.mp4" type="video/mp4">
       </video>
     </section>
 
-    <section class="case-section container reveal-fade" style="border-top: none; padding-top: 0;">
-      <h2>A bold new look</h2>
-      <p class="lede">When this project kicked off, Davidson&rsquo;s website made visitors work for answers. Services, people, and insights were hard to find, and the way to get in touch felt generic and unclear. For a firm that helps clients navigate complexity with confidence, that was the problem to solve.</p>
-      <p>The redesign was a chance to build one clear structure, from the homepage to services, industries, people, careers, and The Bottom Line. I helped lead the redesign from start to finish. I mapped the site structure, used Figma to plan how the design system applies to each page, and then built and refined those pages in WordPress.</p>
+    <section class="case-section container reveal-fade">
+      <div class="davidson-intro-grid">
+        <div>
+          <h2>A <strong>bold</strong> new look</h2>
+        </div>
+        <div class="davidson-intro-body">
+          <p>When this project kicked off, Davidson&rsquo;s website made visitors work for answers. Services, people, and insights were hard to find, and the way to get in touch felt generic and unclear. For a firm that helps clients navigate complexity with confidence, that was the problem to solve.</p>
+          <p>The redesign was a chance to build one clear structure, from the homepage to services, industries, people, careers, and The Bottom Line. I helped lead the redesign from start to finish. I mapped the site structure, used Figma to plan how the design system applies to each page, and then built and refined those pages in WordPress.</p>
+        </div>
+      </div>
     </section>
 
     <section class="case-section container reveal-fade">
@@ -145,7 +197,7 @@
 
     <!-- Wireframe, prototype, and live page: add your screenshot as images/davidson-wireframe-prototype-live.png to show it here. -->
 
-    <section class="case-section container reveal-fade">
+    <section class="case-section container reveal-fade more-from">
       <h2>More from Davidson</h2>
       <p class="lede">The website was the main project, but my work went further. I rebuilt how Davidson plans content with a new content calendar, and I wrote staff bios and site copy in the Davidson voice.</p>
 
@@ -191,5 +243,20 @@
   </main>
 
   <script src="js/script.js"></script>
+  <script>
+    // Davidson page only: the header text is white while it sits over the dark logo hero,
+    // then switches back to dark once you scroll past it.
+    (function () {
+      var header = document.querySelector('.site-header');
+      var hero = document.getElementById('davidsonHero');
+      if (!header || !hero) return;
+      function update() {
+        header.classList.toggle('is-over-dark', window.scrollY < hero.offsetHeight - 110);
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
 </body>
 </html>
