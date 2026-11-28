@@ -14,7 +14,7 @@
     .detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 32px; margin-top: 8px; }
     .detail-grid:not(.more-grid) .detail-item img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
     @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
-    .more-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .more-grid { grid-template-columns: repeat(6, 1fr); gap: 16px; }
     .more-grid .detail-item img { aspect-ratio: 4 / 5; object-fit: cover; }
     .more-grid .detail-item video { aspect-ratio: 4 / 5; object-fit: contain; background: #075851; }
     @media (max-width: 768px) { .more-grid { grid-template-columns: 1fr; } }
@@ -85,7 +85,7 @@
     .page-slide { flex: 0 0 calc(min(100vw, var(--container-width)) - var(--gutter) * 2); scroll-snap-align: start; margin: 0; }
     .page-slide:first-child { margin-left: max(var(--gutter), calc((100vw - var(--container-width)) / 2 + var(--gutter))); scroll-snap-align: none; }
     .page-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: 14px; display: block; }
-    .page-slide video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #DEDEDE; border-radius: 14px; display: block; }
+    .page-slide video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #E3E3E3; border-radius: 14px; display: block; }
     .page-slide figcaption { margin-top: 12px; font-size: 20px; color: var(--color-text-secondary); }
   </style>
 </head>
