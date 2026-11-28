@@ -17,6 +17,7 @@
     .more-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
     @media (max-width: 768px) { .more-grid { grid-template-columns: 1fr; } }
     .detail-item img { width: 100%; height: auto; display: block; border-radius: 12px; }
+    .detail-item video { width: 100%; height: auto; display: block; border-radius: 12px; }
     .detail-item h3 { font-size: 16px; font-weight: 600; margin: 16px 0 6px; }
     .detail-item p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin: 0; }
     .more-caption { font-size: 14px; color: var(--color-text-secondary); margin: 12px 0 0; }
@@ -82,6 +83,7 @@
     .page-slide { flex: 0 0 calc(min(100vw, var(--container-width)) - var(--gutter) * 2); scroll-snap-align: start; margin: 0; }
     .page-slide:first-child { margin-left: max(var(--gutter), calc((100vw - var(--container-width)) / 2 + var(--gutter))); scroll-snap-align: none; }
     .page-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: 14px; display: block; }
+    .page-slide video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; display: block; }
     .page-slide figcaption { margin-top: 12px; font-size: 20px; color: var(--color-text-secondary); }
   </style>
 </head>
@@ -246,24 +248,36 @@
     <section class="page-slider-section reveal-fade">
       <div class="page-slider">
         <figure class="page-slide">
-          <img src="images/davidson-v5-homepage-crop.jpg" alt="Davidson homepage">
+          <video src="images/davidson-slider-homepage.mp4" poster="images/davidson-slider-homepage-poster.jpg" autoplay muted loop playsinline disablepictureinpicture oncontextmenu="return false"></video>
           <figcaption>Homepage</figcaption>
         </figure>
         <figure class="page-slide">
-          <img src="images/davidson-v5-industries-crop.jpg" alt="Davidson Industries page">
+          <video src="images/davidson-slider-industries.mp4" poster="images/davidson-slider-industries-poster.jpg" autoplay muted loop playsinline disablepictureinpicture oncontextmenu="return false"></video>
           <figcaption>Industries</figcaption>
         </figure>
         <figure class="page-slide">
-          <img src="images/davidson-v5-people-top-crop.jpg" alt="Davidson Our People page">
+          <video src="images/davidson-slider-services.mp4" poster="images/davidson-slider-services-poster.jpg" autoplay muted loop playsinline disablepictureinpicture oncontextmenu="return false"></video>
+          <figcaption>Services</figcaption>
+        </figure>
+        <figure class="page-slide">
+          <video src="images/davidson-slider-people.mp4" poster="images/davidson-slider-people-poster.jpg" autoplay muted loop playsinline disablepictureinpicture oncontextmenu="return false"></video>
           <figcaption>Our People</figcaption>
         </figure>
         <figure class="page-slide">
-          <img src="images/davidson-careers.jpg" alt="Davidson Careers page">
+          <video src="images/davidson-slider-careers.mp4" poster="images/davidson-slider-careers-poster.jpg" autoplay muted loop playsinline disablepictureinpicture oncontextmenu="return false"></video>
           <figcaption>Careers</figcaption>
         </figure>
         <figure class="page-slide">
-          <img src="images/davidson-contact.jpg" alt="Davidson Contact page">
+          <video src="images/davidson-slider-contact.mp4" poster="images/davidson-slider-contact-poster.jpg" autoplay muted loop playsinline disablepictureinpicture oncontextmenu="return false"></video>
           <figcaption>Contact</figcaption>
+        </figure>
+        <figure class="page-slide">
+          <video src="images/davidson-slider-bottomline.mp4" poster="images/davidson-slider-bottomline-poster.jpg" autoplay muted loop playsinline disablepictureinpicture oncontextmenu="return false"></video>
+          <figcaption>The Bottom Line</figcaption>
+        </figure>
+        <figure class="page-slide">
+          <img src="images/davidson-nexia-crop.jpg" alt="Davidson Nexia page">
+          <figcaption>Nexia</figcaption>
         </figure>
       </div>
     </section>
@@ -287,18 +301,30 @@
         </div>
 
         <div class="detail-item">
-          <img src="images/davidson-more-diwali.jpg" alt="Davidson Diwali post: a calla lily and diya on a dusty-rose background">
-          <p class="more-caption">Culture, designed</p>
+          <img src="images/davidson-more-mining.jpg" alt="Davidson team at a mining site, holding a Davidson flag in front of a mining company sign">
+          <p class="more-caption">On site</p>
         </div>
 
         <div class="detail-item">
-          <img src="images/davidson-more-globe.jpg" alt="Flat map of the Davidson globe-network video, with teal lines from Vancouver to twenty countries">
-          <p class="more-caption">Motion</p>
+          <img src="images/davidson-more-cpabc-thinking.jpg" alt="CPABC Career Week graphic: Thinking CPA? Think Davidson.">
+          <p class="more-caption">Recruitment</p>
         </div>
 
         <div class="detail-item">
-          <img src="images/davidson-more-careerweek.jpg" alt="Two people at the Davidson booth during CPABC Career Week, holding teal foam fingers">
+          <img src="images/davidson-more-cpabc-team.jpg" alt="Davidson team at a career event, holding foam fingers and a Davidson flag">
           <p class="more-caption">On campus</p>
+        </div>
+
+        <div class="detail-item">
+          <img src="images/davidson-more-dapsc.jpg" alt="UBC DAPSC Career Fair graphic: Explore What's Possible">
+          <p class="more-caption">Recruitment</p>
+        </div>
+
+        <div class="detail-item">
+          <video autoplay muted loop playsinline disablepictureinpicture poster="images/davidson-more-brand-poster.jpg" oncontextmenu="return false">
+            <source src="images/davidson-more-brand.mp4" type="video/mp4">
+          </video>
+          <p class="more-caption">Motion</p>
         </div>
       </div>
     </section>
