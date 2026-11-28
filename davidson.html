@@ -85,7 +85,7 @@
     .page-slide { flex: 0 0 calc(min(100vw, var(--container-width)) - var(--gutter) * 2); scroll-snap-align: start; margin: 0; }
     .page-slide:first-child { margin-left: max(var(--gutter), calc((100vw - var(--container-width)) / 2 + var(--gutter))); scroll-snap-align: none; }
     .page-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: 14px; display: block; }
-    .page-slide video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #E3E3E3; border-radius: 20px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14); display: block; }
+    .page-slide video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #E3E3E3; border-radius: 20px; display: block; }
     .page-slide figcaption { margin-top: 12px; font-size: 20px; color: var(--color-text-secondary); }
   </style>
 </head>
@@ -278,7 +278,7 @@
           <figcaption>The Bottom Line</figcaption>
         </figure>
         <figure class="page-slide">
-          <img src="images/davidson-nexia-crop.jpg" alt="Davidson Nexia page">
+          <video src="images/davidson-slider-nexia.mp4" poster="images/davidson-slider-nexia-poster.jpg" autoplay muted loop playsinline disablepictureinpicture oncontextmenu="return false"></video>
           <figcaption>Nexia Global Network</figcaption>
         </figure>
       </div>
