@@ -15,6 +15,8 @@
     .detail-grid:not(.more-grid) .detail-item img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
     @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
     .more-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .more-grid .detail-item img { aspect-ratio: 4 / 5; object-fit: cover; }
+    .more-grid .detail-item video { aspect-ratio: 4 / 5; object-fit: contain; background: #075851; }
     @media (max-width: 768px) { .more-grid { grid-template-columns: 1fr; } }
     .detail-item img { width: 100%; height: auto; display: block; border-radius: 12px; }
     .detail-item video { width: 100%; height: auto; display: block; border-radius: 12px; }
@@ -83,7 +85,7 @@
     .page-slide { flex: 0 0 calc(min(100vw, var(--container-width)) - var(--gutter) * 2); scroll-snap-align: start; margin: 0; }
     .page-slide:first-child { margin-left: max(var(--gutter), calc((100vw - var(--container-width)) / 2 + var(--gutter))); scroll-snap-align: none; }
     .page-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: 14px; display: block; }
-    .page-slide video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; display: block; }
+    .page-slide video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #DEDEDE; border-radius: 14px; display: block; }
     .page-slide figcaption { margin-top: 12px; font-size: 20px; color: var(--color-text-secondary); }
   </style>
 </head>
@@ -370,6 +372,35 @@
       heroVideo.addEventListener('ended', function () {
         setTimeout(function () { heroVideo.play(); }, 34000);
       });
+    })();
+    // Slider videos: only the slide you are on plays. The videos peeking
+    // in from the sides stay paused, so one plays at a time.
+    (function () {
+      var slider = document.querySelector('.page-slider');
+      if (!slider || !('IntersectionObserver' in window)) return;
+      var slides = Array.prototype.slice.call(slider.querySelectorAll('.page-slide'));
+      var ratios = {};
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var idx = slides.indexOf(entry.target);
+          if (idx > -1) ratios[idx] = entry.intersectionRatio;
+        });
+        var best = -1, bestRatio = 0;
+        Object.keys(ratios).forEach(function (key) {
+          if (ratios[key] > bestRatio) { bestRatio = ratios[key]; best = +key; }
+        });
+        slides.forEach(function (slide, i) {
+          var video = slide.querySelector('video');
+          if (!video) return;
+          if (i === best && bestRatio > 0.5) {
+            var p = video.play();
+            if (p) p.catch(function () {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { root: slider, threshold: [0, 0.25, 0.5, 0.75, 1] });
+      slides.forEach(function (slide) { observer.observe(slide); });
     })();
   </script>
 </body>
